@@ -1,6 +1,6 @@
 # MSNR_2019_Seminarski
 
-## Tema rada: Podrska objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C#, Ada i Ruby
+## Tema rada: Podrška objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C#, Ada i Ruby
 
 ## Autori: 
 
