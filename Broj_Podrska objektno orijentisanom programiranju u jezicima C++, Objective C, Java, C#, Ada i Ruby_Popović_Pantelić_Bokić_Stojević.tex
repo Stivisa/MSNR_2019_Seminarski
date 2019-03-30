@@ -53,9 +53,9 @@
 
 \begin{document}
 
-\title{\Large Podrska objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C\#, Ada i Ruby\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
+\title{\Large Podrška objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C\#, Ada i Ruby\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
 
-\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ kontakt email prvog, drugog, trećeg, četvrtog autora}
+\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ kontakt email prvog, pantelic.dusan@protonmail.com, trećeg, četvrtog autora}
 
 %\date{9.~april 2015.}
 
@@ -78,7 +78,7 @@ Kada budete predavali seminarski rad, imenujete datoteke tako da sadrže redni b
 \section{Java}
 \label{sec:java}
 
-Objekte klasa instanciramo pomoću metoda konstruktora(nema povratni tip i uvek isto zove kao i klasa) sa odgovarajućim argumentima.Ako ne definišemo konstruktor,automatski se generiše podrazumevani konstruktor, koji je prazan i nema argumente.U slučaju da nema argumente,inicijalizuje objekat na podrazumevane vrednosti.Sledeći primer (\ref{lst:javaDeklaracija}) predstavlja deklaraciju klasa zaposleni,koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}).
+Objekte klasa instanciramo pomoću metoda konstruktora(nema povratni tip i uvek se zove isto kao i klasa) sa odgovarajućim argumentima. Ako ne definišemo konstruktor, automatski se generiše podrazumevani konstruktor, koji je prazan i nema argumente. U slučaju da nema argumente, inicijalizuje objekat na podrazumevane vrednosti. Sledeći primer (\ref{lst:javaDeklaracija}) predstavlja deklaraciju klase zaposleni, koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}).
 
 \begin{lstlisting}[caption={Primer deklarisanja klase sa enkapsulacijom i nasleđivanjem},frame=single, label=lst:javaDeklaracija]
 public class Employee {
@@ -108,41 +108,41 @@ class Driver extends Employee {
 \subsection{Enkapsulacija}
 \label{subsec:javaEnkapsulacija}
 
-Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi.Ovo znači da se podacima može pristupiti isključivo iz deklarisane klase. Podacima neophodnim za funkcionalnost programa obezbeđuje se pristup čitanja i menjanja (eng. ~{\em getters and setters})\cite{horstmann2017core} preko javnih metoda.U primeru koda (\ref{lst:javaDeklaracija}),vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
+Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi. Ovo znači da se podacima može pristupiti isključivo iz deklarisane klase. Podacima neophodnim za funkcionalnost programa obezbeđuje se pristup čitanja i menjanja (eng. ~{\em getters and setters})\cite{horstmann2017core} preko javnih metoda. U primeru koda (\ref{lst:javaDeklaracija}), vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
 
 \subsection{Nasleđivanje}
 \label{subsec:javaNasledjivanje}
 
-Za označavanje koristimo ključnu reč \textbf{extends}.Podela po artiklu \cite{oopJava}:
+Za označavanje koristimo ključnu reč \textbf{extends}. Podela po artiklu \cite{oopJava}:
 \begin{itemize}
-  \item Po nivoima,kada klasu A nasleđuje klasa B,a nju nasleđuje klasa C.
-  \item Hijerarhijsko nasleđivanje,gde klase B i C nasleđuju klasu A
-  \item Višestruko nasleđivanje(nasleđivanje više klasa) nije moguće,već se implementira preko interfejsa(detaljnije \ref{subsec:javaApstrakcija})
+  \item Po nivoima, kada klasu A nasleđuje klasa B, a nju nasleđuje klasa C.
+  \item Hijerarhijsko nasleđivanje, gde klase B i C nasleđuju klasu A.
+  \item Višestruko nasleđivanje(nasleđivanje više klasa) nije moguće, već se implementira preko interfejsa(detaljnije \ref{subsec:javaApstrakcija}).
 \end{itemize}
-U primeru koda (\ref{lst:javaDeklaracija}),klasa vozač nasleđuje klasu zaposleni.
+U primeru koda (\ref{lst:javaDeklaracija}), klasa vozač nasleđuje klasu zaposleni.
 
 \subsection{Polimorfizam}
 \label{subsec:javaPolimorfizam}
 
 Višestruka upotrebljivost koda za različite vrste objekata.
 
-Pripadnost metoda objektu  se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept važnosti metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}.U primeru koda \ref{lst:javaDeklaracija},Marko.display(); pozvaće metod klase vozač. 
+Pripadnost metoda objektu  se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept važnosti metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}. U primeru koda \ref{lst:javaDeklaracija}, Marko.display(); pozvaće metod klase vozač. 
 
-Koncept prenatrpanosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2017core},određuje metode u vremenu kompajliranja(eng.{\em compile time}) na osnovu razlika u potpisu metode(različito ime metoda ili tipovi i broj parametara).U primeru koda [\ref{lst:javaDeklaracija}],Marko.display(2); pozvaće metod display(int x) klase vozač.
+Koncept prenatrpanosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2017core}, određuje metode u vremenu kompajliranja(eng.{\em compile time}) na osnovu razlika u potpisu metode(različito ime metoda ili tipovi i broj parametara). U primeru koda [\ref{lst:javaDeklaracija}], Marko.display(2); pozvaće metod display(int x) klase vozač.
 
 \subsection{Apstrakcija}
 \label{subsec:javaApstrakcija}
 
-Izdvajanje skupa metoda sa kojima spoljašnji korisnik komunicira,prema artiklu \cite{oopJava},vršimo pomoću apstraktnih klasa ili interfejsa.
+Izdvajanje skupa metoda sa kojima spoljašnji korisnik komunicira, prema artiklu \cite{oopJava}, vršimo pomoću apstraktnih klasa ili interfejsa.
 
-Za apstraktne klase navodimo ključnu reč~{\em \textbf{abstract}}(kod \ref{lst:javaAbstract}).Ne mogu se instancirati,ali može biti tip promenljive.Sadrže apstraktne metode(istom ključnom reči obeležavaju) koje treba da predefiniše neka podklasa.
+Za apstraktne klase navodimo ključnu reč~{\em \textbf{abstract}}(kod \ref{lst:javaAbstract}). Ne mogu se instancirati, ali može biti tip promenljive. Sadrže apstraktne metode(istom ključnom reči obeležavaju) koje treba da predefiniše neka podklasa.
 
 \begin{lstlisting}[caption={Apstraktna klasa},frame=single, label=lst:javaAbstract]
 public abstract class Employee {
 	public abstract void display(); ...
 \end{lstlisting}
 
-Interfejs predstavlja nacrt klase.Sadrži apstraktne,statične,podrazumevane metode(mogu se predefinisati u klasi) i statičke promenljive..Da implementiramo interfejs navodimo ključnu reč~{\em \textbf{implements}}(kod \ref{lst:javaInterfejs}) i zatim ime interfejsa(slično nasleđivanju).Prednost interfejsa\cite{horstmann2017core} je da klasa može implementirati više interfejsa,dok može da nasleđuje samo jednu klasu.
+Interfejs predstavlja nacrt klase. Sadrži apstraktne, statične, podrazumevane metode(mogu se predefinisati u klasi) i statičke promenljive. Da implementiramo interfejs navodimo ključnu reč~{\em \textbf{implements}}(kod \ref{lst:javaInterfejs}) i zatim ime interfejsa(slično nasleđivanju). Prednost interfejsa\cite{horstmann2017core} je da klasa može implementirati više interfejsa, dok može da nasleđuje samo jednu klasu.
 
 \begin{lstlisting}[caption={Interfejs},frame=single, label=lst:javaInterfejs]
 interface Employee {
