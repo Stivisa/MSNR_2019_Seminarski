@@ -178,6 +178,7 @@ Osnovu objektno orijentisanog programiranja u programskom jeziku Ruby prikazaće
 
 \begin{lstlisting}[caption={Primer deklarisanja klase u programskom jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
 class Student
+ 	attr_accessor :name
 	@@total_num_of_students = 0
 	def initialize(name)
 		@name = name
@@ -196,10 +197,11 @@ stud1 = Student.new("John")
 
 \subsection{Enkapsulacija}
 \label{subsec:rubyEnkapsulacija}
-Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije. Postoje tri nivoa zaštite pristupa: javni(eng. ~{\em public}), zasticeni(eng. ~{\em protected}) i privatni(eng. ~{\em private}). Navođenjem jednog od tri prethodno navedena nivoa u liniji neposredno pre definicije metoda postižemo željeni efekat.
+Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije ključnim rečima \textbf{protected} i \textbf{private} neposredno pre definicije metoda. Ruby nam pruža mogucnost ugrađenih metoda za pristup(eng. ~{\em accessor methods}). U primeru(\ref{lst:rubyDeklaracija})  \textbf{attr\_accessor} omogućava čitanje i menjanje vrednosti promenljivih klase. Pomocu \textbf{attr\_reader} i \textbf{attr\_writer} možemo pojedinačno dopustiti samo čitanje odnosno samo menjanje vrednosti promenljivih.
 
 \subsection{Nasleđivanje}
 \label{subsec:rubyNasledjivanje}
+
 
 \subsection{Polimorfizam}
 \label{subsec:rubyPolimorfizam}
