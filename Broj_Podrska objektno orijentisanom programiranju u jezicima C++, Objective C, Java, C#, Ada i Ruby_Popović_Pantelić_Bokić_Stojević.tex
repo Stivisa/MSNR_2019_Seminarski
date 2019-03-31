@@ -170,9 +170,42 @@ Deo za C\#.
 \label{sec:ada}
 Deo za Ada.
 
+\newpage
+
 \section{Ruby}
 \label{sec:ruby}
-Deo za Ruby.
+Osnovu objektno orijentisanog programiranja u programskom jeziku Ruby prikazaćemo primerom(\ref{lst:rubyDeklaracija}) kreiranja klase i kreiranjem instanci klase tj. objekata. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima.
+
+\begin{lstlisting}[caption={Primer deklarisanja klase u programskom jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
+class Student
+	@@total_num_of_students = 0
+	def initialize(name)
+		@name = name
+		increase_num_of_students()
+	end
+	private
+	def increase_num_of_students()
+		@@total_num_of_students += 1
+	end
+end
+
+stud1 = Student.new("John")
+
+
+\end{lstlisting}
+
+\subsection{Enkapsulacija}
+\label{subsec:rubyEnkapsulacija}
+Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije. Postoje tri nivoa zaštite pristupa: javni(eng. ~{\em public}), zasticeni(eng. ~{\em protected}) i privatni(eng. ~{\em private}). Navođenjem jednog od tri prethodno navedena nivoa u liniji neposredno pre definicije metoda postižemo željeni efekat.
+
+\subsection{Nasleđivanje}
+\label{subsec:rubyNasledjivanje}
+
+\subsection{Polimorfizam}
+\label{subsec:rubyPolimorfizam}
+
+\subsection{Apstrakcija}
+\label{subsec:rubyApstrakcija}
 
 \section{Osnovna uputstva}
 Vaš seminarski rad mora da sadrži najmanje jednu \textbf{sliku}, najmanje jednu \textbf{tabelu} i najmanje \textbf{sedam referenci} u spisku literature. Najmanje jedna slika treba da bude originalna i da predstavlja neke podatke koje ste Vi osmislili da treba da prezentujete u svom radu. Isto važi i za najmanje jednu tabelu. 	Od referenci, neophodno je imati bar jednu \textbf{knjigu}, bar jedan \textbf{naučni članak} iz odgovarajućeg časopisa i bar jednu adekvatnu \textbf{veb adresu}. 
