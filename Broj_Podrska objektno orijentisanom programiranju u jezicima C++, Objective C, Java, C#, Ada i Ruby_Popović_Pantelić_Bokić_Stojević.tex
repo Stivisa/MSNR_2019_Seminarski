@@ -223,41 +223,51 @@ Deo za Ada.
 
 \section{Ruby}
 \label{sec:ruby}
-Osnovu objektno orijentisanog programiranja u programskom jeziku Ruby prikazaćemo primerom(\ref{lst:rubyDeklaracija}) kreiranja klase i kreiranjem instanci klase tj. objekata. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima.
+ Podršku u programskom jeziku Ruby ilustrovaćemo primerom(\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima.
 
-\begin{lstlisting}[caption={Primer deklarisanja klase u programskom jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
-class Student
- 	attr_accessor :name
-	@@total_num_of_students = 0
+\begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
+class Employee
+attr_accessor :name
+def initialize(name)
+	@name = name
+	print()
+end
+def print
+	puts "Employee: #{@name}."
+end
+end
+class Driver < Employee
 	def initialize(name)
 		@name = name
-		increase_num_of_students()
+		print()
 	end
 	private
-	def increase_num_of_students()
-		@@total_num_of_students += 1
+	def print
+		puts "Driver: #{@name}."
 	end
 end
 
-stud1 = Student.new("John")
-
-
+emp = Employee.new("John")
+drv = Driver.new("John")
 \end{lstlisting}
 
 \subsection{Enkapsulacija}
 \label{subsec:rubyEnkapsulacija}
-Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije ključnim rečima \textbf{protected} i \textbf{private} neposredno pre definicije metoda. Ruby nam pruža mogucnost ugrađenih metoda za pristup(eng. ~{\em accessor methods}). U primeru(\ref{lst:rubyDeklaracija})  \textbf{attr\_accessor} omogućava čitanje i menjanje vrednosti promenljivih klase. Pomocu \textbf{attr\_reader} i \textbf{attr\_writer} možemo pojedinačno dopustiti samo čitanje odnosno samo menjanje vrednosti promenljivih.
+Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije ključnim rečima \textbf{public} \textbf{protected}, \textbf{private} neposredno pre definicije jednog ili više metoda. Ruby nam pruža mogucnost ugrađenih metoda za pristup(eng. ~{\em accessor methods}). U primeru(\ref{lst:rubyDeklaracija})  \textbf{attr\_accessor} omogućava čitanje i menjanje vrednosti promenljivih klase. Pomocu \textbf{attr\_reader} i \textbf{attr\_writer} možemo pojedinačno dopustiti samo čitanje odnosno samo menjanje vrednosti promenljivih.
 
 \subsection{Nasleđivanje}
 \label{subsec:rubyNasledjivanje}
-
+Kada nakon imena klase u njenoj definicije dodamo znak < za kojim sledi ime već postojeće klase, dobijamo efekat nasleđivanja koji možemo videti u prethodnom primeru(\ref{lst:rubyDeklaracija}) gde klasa \textit{Driver} nasleđuje klasu \textit{Employee}(primetiti da u klasi \textit{Driver} nismo implementirali \textbf{attr\_accessor} jer se nasledjuje). Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je moguće dok višestruko nasleđivanje nije(više o tipovima nasleđivanja u \ref{subsec:javaNasledjivanje}).
 
 \subsection{Polimorfizam}
 \label{subsec:rubyPolimorfizam}
+Osnovni vid polimorfizma možemo postići nasleđivanjem tako sto ce razliciti objekti odgovoriti različito na iste metode. U primeru(\ref{lst:rubyDeklaracija}) u klasi \textit{Driver} smo definisali metod \textit{print} koji je istog naziva kao i nasleđeni metod čime postižemo da instanca klase odgovori različito na metod od instance roditeljske klase. 
+
+Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem"(eng. ~{\em duck typing}) u kojem nisu bitni tipovi objekata već skup istoimenih metoda koje poseduju. Za primer uzmimo klasu \textit{Duck} koja poseduje metod  \textit{quack} i funkciju koja za argument uzima objekat tipa \textit{Duck} i poziva metod \textit{quack}. U tom slučaju funkciji možemo proslediti bilo koji objekat koji poseduje metod naziva \textit{quack}(sa istim ili različitim ponašanjem metoda) i gledati na njega kao da je tipa \textit{Duck} bez obzira što on to nije.
 
 \subsection{Apstrakcija}
 \label{subsec:rubyApstrakcija}
-
+Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može dobiti korišćenjem biblioteke "abstract". Takođe je moguće implementirati apstakciju pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koji pokrecu "NotImplementedError" grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomocu gore opisanog polimorfizma(\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi.
 \section{Osnovna uputstva}
 Vaš seminarski rad mora da sadrži najmanje jednu \textbf{sliku}, najmanje jednu \textbf{tabelu} i najmanje \textbf{sedam referenci} u spisku literature. Najmanje jedna slika treba da bude originalna i da predstavlja neke podatke koje ste Vi osmislili da treba da prezentujete u svom radu. Isto važi i za najmanje jednu tabelu. 	Od referenci, neophodno je imati bar jednu \textbf{knjigu}, bar jedan \textbf{naučni članak} iz odgovarajućeg časopisa i bar jednu adekvatnu \textbf{veb adresu}. 
 
