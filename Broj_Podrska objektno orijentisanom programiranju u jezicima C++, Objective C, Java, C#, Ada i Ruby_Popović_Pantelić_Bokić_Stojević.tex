@@ -77,8 +77,57 @@ Kada budete predavali seminarski rad, imenujete datoteke tako da sadrže redni b
 
 \section{C++}
 \label{sec:c++}
-Deo za C++.
+Glavne stvari koje jedan programski jezik treba u potpunosti da podržava da bi se nazvao objektno-orijentisanim jezikom su \textbf{polimorfizam}, \textbf{enkapsulacija}, \textbf{nasleđivanje} i \textbf{apstrakcija}, dok jezici koji podržavaje sve 4 funkcionalnosti ali ne u potpunosti se obično nazivaju delimično objektno orijentisanim jezicima. Zbog sledećih karakteristika, C++ se smatra delimično objektno orijentisanim jezikom.
+\begin{enumerate}
+\item \textbf{Main funkcija je izvan klase :} U C++ može da se napiše validan, ispravan kod bez kreiranja ijednog objekta. Main funkcija je obavezna ali se ona nalazi izvan svake klase, što nije karakteristično za druge OOP jezike.
+\item \textbf{Koncept globalne promenljive:} U C++ može da se kreira globalna promenljiva koja je dostupna svugde u kodu, dok u Javi promenljive mogu biti deklarisane samo u okviru klase gde mogu da se koriste modifikatori pristupa (private, protected, public).
+\item \textbf{Postojanje friend funkcija:} Friend (prijateljska) funkcija može pristupiti privatnim poljima klase kojoj je deklarisana kao prijateljska. Ovo je jedna veoma korisna karakteristika C++, ali i dalje narušava neke koncepte objektno orijentisane paradigme.
+\end{enumerate}
 
+\subsection{Enkapsulacija}
+\label{subsec:c++Enkapsulacija}
+Za razliku od Jave, u C++ ne mora eksplicitno za svaki atribut ili metod klase da bude naglašeno pravo pristupa, nego se prave sekcije, i na početku sekcije se stavi modifikator pristupa (podržani su private, public i protected, ne podržava package modifikator). Ukoliko se modifikator ne navede eksplicitno, kod klasa se podrazumeva private, dok kod struktura se podrazumeva public (što je jedna od osnovnih razlika između struktura i klasa u C++).
+\begin{lstlisting}[caption={Primer deklarisanja klase sa enkapsulacijom},frame=single, label=lst:c++Deklaracija]
+class Employee {
+private:
+	int salary;
+public: 
+	Employee(int e_salary) { salary = e_salary;}
+	int getSalary(){ return salary;}
+	void setSalary(int newSalary) { salary = newSalary;}
+	void display() {
+     		std::cout << "Hello I'm the employee!" << std::endl;
+	}
+};
+\end{lstlisting}
+\subsection{Nasleđivanje}
+\label{subsec:c++Nasledjivanje}
+Za razliku od Jave, u C++ i nasleđivanje može biti private, protected ili public. Ukoliko je nasleđivanje public, to znači da sva nasleđena polja ostaju javna, ukoliko je protected, tada ce sva public polja postati protected, a ukoliko je nasleđivanje private, to znači da će sva public i protected polja postati private. Takođe, za razliku od Jave u C++ je podržano i višestruko nasleđivanje, gde jedna klasa može da nasledi više od jedne klase. Zbog problema koje višestruko nasleđivanje može da uvede, u C++ je uvedena jos jedna ključna reč prilikom nasleđivanja- vritual, koja sprečava tzv. dijamant strukturu. 
+\begin{lstlisting}[caption={Primer nasleđivanja klasa u C++},frame=single, label=lst:c++Nasledjivanje]
+class Driver: public Employee  {
+private:
+  	std::string truck = "FAP";
+public: 
+   	Driver(int salary, std::string truck) 
+	: Employee(salary), truck(truck) 
+	{};
+  	void display() {
+		std::cout << "My truck is " << truck << "!" << std::endl; };
+};
+\end{lstlisting}
+\subsection{Polimorfizam}
+\label{subsec:c++Polimorfizam}
+U C++ su podržana dva osnovna tipa polimorfizma- \textbf{polimorfizam u vreme kompilacije} i \textbf{polimorfizam u vreme izvršavanja}. Prvi obezbeđuje preopterećenje metoda i operatora. Preopterećenje operatora je isto jedna od C++ specifičnih mogućnosti, gde možemo sami da definišemo ponašanje operatora npr "+" dok god ispunjava svoje osnovne karakteristike (da ima 2 argumenta). Drugi tip polimorfizma omogućuje premošćavanje metoda, tj. za metod se kaže da je premošten ukoliko izvedena klasa poseduje metod sa identičnim potpisom. 
+\subsection{Apstrakcija}
+\label{subsec:c++Apstrakcija}
+Opet, za razliku od Jave, C++ ne poseduje ključnu rec ~{\em abstract}. Apstraktne klase se u C++ kreiraju tako što se napravi virtuelna metoda i u potpisu joj se dodeli 0. Takva klasa ne može biti instancirana, ali može biti napravljen pokazivač na nju. Takođe, apstraktna klasa može da ima konstruktor i destruktor. Klasa koje ne premosti virtuelnu metodu takođe postaje apstraktna klasa. Postoji nekoliko pravila koja moraju da važe za apstraktne klase:
+\begin{enumerate}
+	\item Moraju biti proglašene javnim (inače potklasa ne može da ih premosti).
+	\item Virtuelne metode ne mogu biti static i ne mogu biti prijateljske metode neke druge klase.
+	\item Virtuelnim metodama se mora pristupati preko pokazivača na baznu klasu da bi se dobio pravi polimorfizam u vreme izvršavanja.
+	\item Potpis virtuelne metode mora biti identičan i u baznoj i izvedenoj klasi (povratna vrednost, tipovi argumenata, konstantnost argumenata,...).
+	\item Klase mogu imati virtuelni destruktor, ali ne mogu da imaju virtuelni konstruktor.
+\end{enumerate}
 \section{Objective C}
 \label{sec:objectivec}
 Deo za Objective C.
