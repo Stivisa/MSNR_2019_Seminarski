@@ -213,7 +213,68 @@ class Driver implements Employee{
 
 \section{C\#}
 \label{sec:csharp}
-Deo za C\#.
+
+C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podrsku objektno orijentisanom programiranju ukljucujuci nasledjivanje, enkapsulaciju, apstrakciju, I polimorfizam.
+
+\begin{itemize}
+  \item Nasledjivanje je, kao sto samo ime kaze, mogucnost da “nasledjuje” metode I svojstva od postojecih klasa.
+  \item Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih clanova tretira kao jedan isti objekat.
+  \item Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povecanja efikasnosti.
+\end{itemize}
+
+\begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
+abstract class MobilePhone {  
+    public void Calling();  
+    public void SendSMS();  
+}  
+public class Nokia1400: MobilePhone {}  
+public class Nokia2700: MobilePhone {  
+    public void FMRadio();  
+    public void MP3();  
+    public void Camera();  
+}  
+public class BlackBerry: MobilePhone {  
+    public void FMRadio();  
+    public void MP3();  
+    public void Camera();  
+    public void Recording();  
+    public void ReadAndSendEmails();  
+} 
+\end{lstlisting}
+
+Ne podrzava druge paradigme ali koristi svoje imperativne strukture. Veome je slicna podrska OOP-u kao kod Java programskog jezika takodje su iste I klase I strukture.\\
+
+\subsection{Nasledjivanje}
+\label{subsec:csharpNasledjivanje}
+
+Koristi sintaksu c++ za definisanje klasa.\\
+Nasledjena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definise kao new(novo).\\
+Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().\\
+
+\subsection{Dinamicko vezivanje}
+\label{subsec:csharpDinamickoVezivanje}
+
+Da bi se dozvolilo dinamicko vezivanje metoda pozivaju se metode:\\
+
+\begin{itemize}
+  \item Bazicna klasa metode, oznacava se kao virtual
+  \item Odgovarajuce metode u izvedenim klasama, oznacene su kao override
+  \item Apstraktne metode, oznacene su kao abstract I moraju biti implementirane u svim podklasama.
+\end{itemize}
+
+Sve C\# klase su izvedene od jedinog korena klase, Objekta.\\
+
+\subsection{Ugnjezdene klase}
+\label{subsec:csharpUgnjezdeneKlase}
+
+C\# klasa koja je direktno ugnjezdena u ugnjezdene klase se ponasa kao staticka java ugnjezdena klasa.\\
+C\# ne podrzava ugnjezdene klase koje se ponasaju kao ne staticke java klase.\\
+
+\subsection{Evaluacija}
+\label{subsec:csharpEvaluacija}
+
+C\# je najskorije dizajniran OOP jezik na bazi C-a.\\
+Razlika izmedju podrske C\#-a I Javine podrske za OOP su relativno male.\\
 
 \section{Ada}
 \label{sec:ada}
