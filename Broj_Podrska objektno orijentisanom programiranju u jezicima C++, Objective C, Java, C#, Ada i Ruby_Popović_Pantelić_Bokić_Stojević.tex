@@ -1,6 +1,8 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper]{article}
 
+\setcounter{tocdepth}{1}
+
 \usepackage{color}
 \usepackage{url}
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
@@ -55,7 +57,7 @@
 
 \title{\Large Podrška objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C\#, Ada i Ruby\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
 
-\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ kontakt email prvog, pantelic.dusan@protonmail.com, trećeg, četvrtog autora}
+\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ kontakt email prvog, pantelic.dusan@protonmail.com, trećeg, nikolastojevic@gmail.com}
 
 %\date{9.~april 2015.}
 
@@ -128,9 +130,73 @@ Za razliku od drugih OOP jezika, C++ ne poseduje ključnu rec ~{\em abstract}. A
 	\item Potpis virtuelne metode mora biti identičan i u baznoj i izvedenoj klasi (povratna vrednost, tipovi argumenata, konstantnost argumenata,...).
 	\item Klase mogu imati virtuelni destruktor, ali ne mogu da imaju virtuelni konstruktor.
 \end{enumerate}
+
 \section{Objective C}
-\label{sec:objectivec}
-Deo za Objective C.
+\label{sec:ObjectiveC}
+
+Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u dve sekcije koje se označavaju sa ključnom reči \textbf{@interface} i \textbf{@implementation}, gde se vrši deklaracija i implementacija metoda klase. Obe sekcije se završavaju ključnom reči \textbf{@end}. Svaka klasa je izvedena iz super klase NSObject, čiji konstruktor init je podrazumevani konstruktor i on se predefiniše da odgovara konkretnoj klasi. Moguće je kreirati i svoje konstruktore sa proizvoljnim argumentima,slično ostalim programskim jezicima i mogu se proizvoljno imenovati.. Detaljnije o ovome i ključnim rečima u dokumentaciji \cite{ObjectiveCdoc}. U primeru (\ref{ObjectiveC}) vidimo definisanje klase zaposleni (detaljnije \ref{subsec:ObjCEnkapsulacija} ).
+
+\begin{lstlisting}[caption={Primer koda u Objective C jeziku},frame=single, label=ObjectiveC]
+@interface Employee : NSObject {
+   @public int age;
+   double salary;
+}
+@property(nonatomic, readwrite) double salary;  // Property
+- (void)display;
+@end
+
+@implementation Employee
+@synthesize salary; 
+- (void)display {
+   NSLog(@"Employee salary is %f", salary);
+}
+@end
+
+@interface Driver : Employee {
+   NSString* truck;
+}
+- (id)initWithTruck:(NSString*)model;
+@end
+
+@implementation Driver
+- (id)initWithTruck:(NSString*)model {
+   truck = model;
+   return self;
+}
+- (void)display {
+   NSLog(@"Driver salary is %f", salary);
+}
+@end
+
+int main(int argc, const char * argv[]) {
+   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+   Employee *empl = [[Driver alloc]initWithTruck:@"Mercedes"];
+   empl.salary = 5.0;  empl->age = 33;
+   [empl display];
+   [pool drain];
+   return 0;
+}}
+\end{lstlisting}
+
+\subsection{Enkapsulacija}
+\label{subsec:ObjCEnkapsulacija}
+
+Atributi klase su automatski privatni, što pogoduje enkapsulaciji. Privatnim svojstvima se omogućuje pristup izvan klase preko ključne reči \textbf{@property}, uz implementaciju pristupnih metoda. Olakšanje, navođenjem atributa uz ključnu reč \textbf{@synthesize}, automatski se generišu metode pristupa.  Primer (\ref{ObjectiveC}) u main funkciji, prikazuje kako pozivamo pristupne metode pomoću operatora (.), dok se javnim atributima pristupa preko operatora (->).
+
+\subsection{Nasleđivanje}
+\label{subsec:ObjCNasledjivanje}
+
+Ovaj koncept označavamo sa (:) i imenom klase koju nasleđujemo. Primer (\ref{ObjectiveC}), klasa vozač nasleđuje klasu zaposleni .Postoji nasleđivanje u više nivoa i hijerarhijsko. Ako želimo iz izvedene klase da zovemo metode bazne, to radimo referisanjem na baznu klasu pomoću ključne reči \textbf{super}.
+
+\subsection{Polimorfizam}
+\label{subsec:ObjCPolimorfizam}
+
+Višestruka upotrebljivost koda u vidu preopterećenosti (eng.~\textbf{\em overloading}) nije omogućeno u Objective C jeziku, tako da se metodi moraju različito imenovati\cite{ObjectiveCbook}. Koncept važnosti metoda(eng.~\textbf{\em overriding})  postoji, i prikazan je u primeru (\ref{ObjectiveC}). Gde klase zaposleni i vozač imaju isti metod display i poziv [empl display] će izvršiti metod klase vozač, zato što promenljiva zaposleni empl referiše na objekat tipa vozač.
+
+\subsection{Apstrakcija}
+\label{subsec:ObjCApstrakcija}
+
+Jezik Objective C nema definisan koncept apstraktnih klasa\cite{ObjectiveCbook}, sličan efekat je moguće postići programerskom snalažljivošću i ne instancirati klasu koja bi trebalo biti apstraktna. Za interfejse koje ovde nazivamo protokoli, vezana je ključna reč \textbf{@protocol} jer je \textbf{interface} rezervisana za klase. Sekcija protokola se završava sa \textbf{@end} i može sadžati dve podoblasti \textbf{@required} za metode koji se obavezno moraju implementirati u klasi i \textbf{@optional} za metode čija je implementacija opciona.
 
 \section{Java}
 \label{sec:java}
@@ -209,7 +275,6 @@ class Driver implements Employee{
    	 public void display(){...}
 \end{lstlisting}
 
-\newpage
 
 \section{C\#}
 \label{sec:csharp}
@@ -280,8 +345,6 @@ Razlika izmedju podrske C\#-a I Javine podrske za OOP su relativno male.\\
 \label{sec:ada}
 Deo za Ada.
 
-\newpage
-
 \section{Ruby}
 \label{sec:ruby}
  Podršku u programskom jeziku Ruby ilustrovaćemo primerom(\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima.
@@ -329,199 +392,6 @@ Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem"(eng. ~{\em
 \subsection{Apstrakcija}
 \label{subsec:rubyApstrakcija}
 Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može dobiti korišćenjem biblioteke "abstract". Takođe je moguće implementirati apstakciju pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koji pokrecu "NotImplementedError" grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomocu gore opisanog polimorfizma(\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi.
-
-
-\section{Osnovna uputstva}
-Vaš seminarski rad mora da sadrži najmanje jednu \textbf{sliku}, najmanje jednu \textbf{tabelu} i najmanje \textbf{sedam referenci} u spisku literature. Najmanje jedna slika treba da bude originalna i da predstavlja neke podatke koje ste Vi osmislili da treba da prezentujete u svom radu. Isto važi i za najmanje jednu tabelu. 	Od referenci, neophodno je imati bar jednu \textbf{knjigu}, bar jedan \textbf{naučni članak} iz odgovarajućeg časopisa i bar jednu adekvatnu \textbf{veb adresu}. 
-
-\textbf{Dužina seminarskog rada treba da bude od 10 do 12 strana.} Svako prekoračenje ili potkoračenje biće kažnjeno sa odgovarajućim brojem poena. Eventualno, nakon strane 12, može se javiti samo tekst poglavlja \textbf{Dodatak} koji sadrži nekakav dodatni k\^{o}d, ali je svakako potrebno da rad može da se pročita i razume i bez čitanja tog dodatka. 
-
-Ко жели, може да пише рад ћирилицом. У том случају, неопходно је да су инсталирани одговарајући пакети: texlive-fonts-extra, texlive-latex-extra, texlive-lang-cyrillic, texlive-lang-other. 
-
-Nemojte koristiti stari način pisanja slova, tj ovo:
-\begin{verbatim}
-\v{s} i \v{c} i \'c ...
-\end{verbatim}
-Koristite direknto naša slova:	
-\begin{verbatim}
-š i č i ć ... 
-\end{verbatim}
-
-
-\section{Engleski termini i citiranje}	
-\label{sec:termini_i_citiranje}
-
-Na svakom mestu u tekstu naglasiti odakle tačno potiču informacije. Uz sve novouvedene termine u zagradi naglasiti od koje engleske reči termin potiče. 
-
-Naredni primeri ilustruju način uvođenja enlegskih termina kao i citiranje. \cite{horstmann2017core}
-
-\begin{primer}
-Problem zaustavljanja (eng.~{\em halting problem}) je neodlučiv \cite{haltingproblem}.
-\end{primer}
-
-\begin{primer}
-Za prevođenje programa napisanih u programskom jeziku C može se koristiti GCC kompajler \cite{gcc}.
-\end{primer}
-
-\begin{primer}
- Da bi se ispitivala ispravost softvera, najpre je potrebno precizno definisati njegovo ponašanje \cite{laski2009software}. 
-\end{primer}
-
-Reference koje se koriste u ovom tekstu zadate su u datoteci {\em seminarski.bib}. Prevođenje u pdf format u Linux okruženju može se uraditi na sledeći način:
-\begin{verbatim}
-pdflatex TemaImePrezime.tex 
-bibtex TemaImePrezime.aux 
-pdflatex TemaImePrezime.tex 
-pdflatex TemaImePrezime.tex 
-\end{verbatim}
-Prvo latexovanje je neophodno da bi se generisao {\em .aux} fajl. {\em bibtex} proizvodi odgovarajući {\em .bbl} fajl koji se koristi za generisanje literature. 
-Potrebna su dva prolaza (dva puta pdflatex) da bi se reference ubacile u tekst (tj da ne bi ostali znakovi pitanja umesto referenci). Dodavanjem novih referenci potrebno je ponoviti ceo postupak.  
-
-
-
-
-
-
-
-
-
-
-
-Broj naslova i podnaslova je proizvoljan. Neophodni su samo Uvod i Zaključak. Na poglavlja unutar teksta referisati se po potrebi. 
-\begin{primer}
-U odeljku \ref{sec:naslov1} precizirani su osnovni pojmovi, dok su zaključci dati u odeljku \ref{sec:zakljucak}.
-\end{primer}
-
-Još jednom da napomenem da nema razloga da pišete:
-\begin{verbatim}
-\v{s} i \v{c} i \'c ...
-\end{verbatim}
-Možete koristiti srpska slova
-\begin{verbatim}
-š i č i ć ... 
-\end{verbatim}
-
-
-
-\section{Slike i tabele}
-\label{slike_i_tabele}
-
-Slike i tabele treba da budu u svom okruženju, sa odgovarajućim naslovima, obeležene labelom da koje omogućava referenciranje. 
-
-\begin{primer} Ovako se ubacuje slika. Obratiti pažnju da je dodato i 
-\begin{verbatim}
-\usepackage{graphicx}
-\end{verbatim}
-
-Na svaku sliku neophodno je referisati se negde u tekstu. Na primer, na slici \ref{fig:pande} prikazane su pande. 
-\end{primer}
-
-\begin{primer} I tabele treba da budu u svom okruženju, i na njih je neophodno referisati se u tekstu. Na primer, u tabeli \ref{tab:tabela1} su prikazana različita poravnanja u tabelama.
-
-\begin{table}[h!]
-\begin{center}
-\caption{Razlčita poravnanja u okviru iste tabele ne treba koristiti jer su nepregledna.}
-\begin{tabular}{|c|l|r|} \hline
-centralno poravnanje& levo poravnanje& desno poravnanje\\ \hline
-a &b&c\\ \hline
-d &e&f\\ \hline
-\end{tabular}
-\label{tab:tabela1}
-\end{center}
-\end{table}
-
-\end{primer}
-
-\section{K\^{o}d i paket listings}
-Za ubacivanje koda koristite paket \textbf{listings}:
-\url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}
-
-\begin{primer}
-Primer ubacivanja koda za programski jezik Python dat je kroz listing \ref{simple}. Za neki drugi programski jezik, treba podesiti odgvarajući programski jezik u okviru defnisanja stila.
-\end{primer}
-\begin{lstlisting}[caption={Primer ubacivanja koda u tekst},frame=single, label=simple]
-# This program adds up integers in the command line
-import sys
-try:
-    total = sum(int(arg) for arg in sys.argv[1:])
-    print 'sum =', total
-except ValueError:
-    print 'Please supply integer arguments'
-\end{lstlisting}
-
-
-\section{Prvi naslov}
-\label{sec:naslov1}
-
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-
-\subsection{Prvi podnaslov}
-\label{subsec:podnaslov1}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-\subsection{Drugi podnaslov}
-\label{subsec:podnaslov2}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-
-\subsection{... podnaslov}
-\label{subsec:podnaslovN}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-\section{n-ti naslov}
-\label{sec:naslovN}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-\subsection{... podnaslov}
-\label{subsec:podnaslovK}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-\subsection{... podnaslov}
-\label{subsec:podnaslovM}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
 
 
 \section{Zaključak}
