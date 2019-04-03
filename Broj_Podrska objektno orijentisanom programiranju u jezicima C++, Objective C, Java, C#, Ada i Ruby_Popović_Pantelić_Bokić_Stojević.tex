@@ -75,6 +75,14 @@ U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite paž
 
 Kada budete predavali seminarski rad, imenujete datoteke tako da sadrže redni broj teme, temu seminarskog rada, kao i prezimena članova grupe. Precizna uputstva na temu imenovnja će biti data na formi za predaju seminarskog rada. Predaja seminarskih radova biće isključivo preko veb forme, a NE slanjem mejla. Link na formu će biti dat u okviru obaveštenja na strani kursa. Vodite računa da prilikom predavanja seminarskog rada predate samo one fajlove koji su neophodni za ponovno generisanje pdf datoteke. To znači da pomoćne fajlove, kao što su .log, .out, .blg, .toc, .aux i slično, \textbf{ne treba predavati}.
 
+SAMO SAM IZDVOJIO IZ JAVE,BOLJE U UVOD DA SE UKOMBINUJE
+Podela prema tekstu \cite{oopJava}:
+\begin{itemize}
+  \item Po nivoima, kada klasu A nasleđuje klasa B, a nju nasleđuje klasa C.
+  \item Hijerarhijsko nasleđivanje, gde klase B i C nasleđuju klasu A.
+  \item Višestruko nasleđivanje, nasleđivanje više klasa.
+\end{itemize}
+
 \newpage
 
 \section{C++}
@@ -134,40 +142,32 @@ Za razliku od drugih OOP jezika, C++ ne poseduje ključnu rec ~{\em abstract}. A
 \section{Objective C}
 \label{sec:ObjectiveC}
 
-Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u dve sekcije koje se označavaju sa ključnom reči \textbf{@interface} i \textbf{@implementation}, gde se vrši deklaracija i implementacija metoda klase. Obe sekcije se završavaju ključnom reči \textbf{@end}. Svaka klasa je izvedena iz super klase NSObject, čiji konstruktor init je podrazumevani konstruktor i on se predefiniše da odgovara konkretnoj klasi. Moguće je kreirati i svoje konstruktore sa proizvoljnim argumentima,slično ostalim programskim jezicima i mogu se proizvoljno imenovati.. Detaljnije o ovome i ključnim rečima u dokumentaciji \cite{ObjectiveCdoc}. U primeru (\ref{ObjectiveC}) vidimo definisanje klase zaposleni (detaljnije \ref{subsec:ObjCEnkapsulacija} ).
+Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u dve sekcije koje se označavaju sa ključnom reči \textbf{@interface} i \textbf{@implementation}, gde se vrši deklaracija i implementacija metoda klase. Obe sekcije se završavaju ključnom reči \textbf{@end}. Svaka klasa je izvedena iz super klase NSObject, čiji konstruktor init je podrazumevani konstruktor, može predefinisati. Moguće je kreirati i svoje konstruktore sa proizvoljnim argumentima,slično ostalim programskim jezicima i mogu se proizvoljno imenovati. Opširnije o ovome u dokumentaciji \cite{ObjectiveCdoc}. U primeru (\ref{ObjectiveC}) vidimo definisanje klase zaposleni (detaljnije \ref{subsec:ObjCEnkapsulacija} ).
 
 \begin{lstlisting}[caption={Primer koda u Objective C jeziku},frame=single, label=ObjectiveC]
 @interface Employee : NSObject {
-   @public int age;
-   double salary;
+   double salary;	@public int age;
 }
-@property(nonatomic, readwrite) double salary;  // Property
+@property(nonatomic, readwrite) double salary; 
 - (void)display;
 @end
 
 @implementation Employee
 @synthesize salary; 
-- (void)display {
-   NSLog(@"Employee salary is %f", salary);
-}
+- (void)display { NSLog(@"Employee salary is %f", salary); }
 @end
 
 @interface Driver : Employee {
-   NSString* truck;
-}
+   NSString* truck;}
 - (id)initWithTruck:(NSString*)model;
 @end
 
 @implementation Driver
 - (id)initWithTruck:(NSString*)model {
-   truck = model;
-   return self;
-}
-- (void)display {
-   NSLog(@"Driver salary is %f", salary);
-}
+   truck = model;	return self;
+   }
+- (void)display { NSLog(@"Driver salary is %f", salary); }
 @end
-
 int main(int argc, const char * argv[]) {
    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
    Employee *empl = [[Driver alloc]initWithTruck:@"Mercedes"];
@@ -181,7 +181,7 @@ int main(int argc, const char * argv[]) {
 \subsection{Enkapsulacija}
 \label{subsec:ObjCEnkapsulacija}
 
-Atributi klase su automatski privatni, što pogoduje enkapsulaciji. Privatnim svojstvima se omogućuje pristup izvan klase preko ključne reči \textbf{@property}, uz implementaciju pristupnih metoda. Olakšanje, navođenjem atributa uz ključnu reč \textbf{@synthesize}, automatski se generišu metode pristupa.  Primer (\ref{ObjectiveC}) u main funkciji, prikazuje kako pozivamo pristupne metode pomoću operatora (.), dok se javnim atributima pristupa preko operatora (->).
+Atributi klase su automatski privatni, što pogoduje enkapsulaciji. Njima se omogućuje pristup izvan klase preko ključne reči \textbf{@property}, uz implementaciju pristupnih metoda. Moguće automatsko generisanje metoda pristupa, navođenjem atributa uz ključnu reč \textbf{@synthesize}. Primer(\ref{ObjectiveC}), main funkcija sadrži pozive pristupnim metodama pomoću operatora (.), dok se javnim atributima pristupa preko operatora (->).
 
 \subsection{Nasleđivanje}
 \label{subsec:ObjCNasledjivanje}
@@ -201,7 +201,7 @@ Jezik Objective C nema definisan koncept apstraktnih klasa\cite{ObjectiveCbook},
 \section{Java}
 \label{sec:java}
 
-Objekte klasa instanciramo pomoću metoda konstruktora(nema povratni tip i uvek se zove isto kao i klasa) sa odgovarajućim argumentima. Ako ne definišemo konstruktor, automatski se generiše podrazumevani konstruktor, koji je prazan i nema argumente. U slučaju da nema argumente, inicijalizuje objekat na podrazumevane vrednosti. Sledeći primer (\ref{lst:javaDeklaracija}) predstavlja deklaraciju klase zaposleni, koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}).
+Kako su klase su u centru zbivanja krenućemo od njih. Definišemo ih pomoću ključne reči \textbf{class}. Sledeći primer (\ref{lst:javaDeklaracija}) prikazuje kreiranje klase zaposleni, koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}). Objekte klasa instanciramo pomoću metoda konstruktora, koji nema povratni tip i uvek se zove isto kao i klasa. Ako ne definišemo konstruktor, automatski se generiše podrazumevani konstruktor\cite{horstmann2017core}, koji inicijalizuje objekat na podrazumevane vrednosti.
 
 \begin{lstlisting}[caption={Primer deklarisanja klase sa enkapsulacijom i nasleđivanjem},frame=single, label=lst:javaDeklaracija]
 public class Employee {
@@ -231,27 +231,19 @@ class Driver extends Employee {
 \subsection{Enkapsulacija}
 \label{subsec:javaEnkapsulacija}
 
-Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi. Ovo znači da se podacima može pristupiti isključivo iz deklarisane klase. Podacima neophodnim za funkcionalnost programa obezbeđuje se pristup čitanja i menjanja (eng. ~{\em getters and setters})\cite{horstmann2017core} preko javnih metoda. U primeru koda (\ref{lst:javaDeklaracija}), vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
+Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi. Ovo znači da se podacima može pristupiti isključivo iz deklarisane klase. Ako su podaci ipak potrebni van klase, omogućuje se njihovo čitanje i menjanje, preko javnih metode pristupa (eng. ~{\em getters and setters})\cite{horstmann2017core}. U primeru(\ref{lst:javaDeklaracija}), vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
 
 \subsection{Nasleđivanje}
 \label{subsec:javaNasledjivanje}
 
-Za označavanje koristimo ključnu reč \textbf{extends}. Podela po artiklu \cite{oopJava}:
-\begin{itemize}
-  \item Po nivoima, kada klasu A nasleđuje klasa B, a nju nasleđuje klasa C.
-  \item Hijerarhijsko nasleđivanje, gde klase B i C nasleđuju klasu A.
-  \item Višestruko nasleđivanje(nasleđivanje više klasa) nije moguće, već se implementira preko interfejsa(detaljnije \ref{subsec:javaApstrakcija}).
-\end{itemize}
-U primeru koda (\ref{lst:javaDeklaracija}), klasa vozač nasleđuje klasu zaposleni.
+Za nasleđivanje koristimo ključnu reč \textbf{extends}. Obratiti pažnju na primer(\ref{lst:javaDeklaracija}), gde klasa vozač nasleđuje svojstva klase zaposleni. U javi postoji nasleđivanje po nivoima i hijerarhijsko. Višestruko ne postoji direktno\cite{oopJava}, već se implementira preko interfejsa (detaljnije \ref{subsec:javaApstrakcija}).Ako želimo iz izvedene klase da zovemo metode bazne, to radimo referisanjem na baznu klasu pomoću ključne reči \textbf{super}.
 
 \subsection{Polimorfizam}
 \label{subsec:javaPolimorfizam}
 
-Višestruka upotrebljivost koda za različite vrste objekata.
+Višestruka upotrebljivost koda, tj. pripadnost metoda objektu se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept važnosti metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}. U primeru koda \ref{lst:javaDeklaracija}, Marko.display(); pozvaće metod klase vozač, iako postoji isti metod bazne klase.
 
-Pripadnost metoda objektu  se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept važnosti metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}. U primeru koda \ref{lst:javaDeklaracija}, Marko.display(); pozvaće metod klase vozač. 
-
-Koncept prenatrpanosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2017core}, određuje metode u vremenu kompajliranja(eng.{\em compile time}) na osnovu razlika u potpisu metode(različito ime metoda ili tipovi i broj parametara). U primeru koda [\ref{lst:javaDeklaracija}], Marko.display(2); pozvaće metod display(int x) klase vozač.
+Koncept preopterećenosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2017core}, određuje metode u vremenu kompajliranja(eng.{\em compile time}) na osnovu razlika u potpisu metode(različito ime metoda ili tipovi i broj parametara). U primeru koda [\ref{lst:javaDeklaracija}], Marko.display(2); pozvaće metod display(int x) klase vozač.
 
 \subsection{Apstrakcija}
 \label{subsec:javaApstrakcija}
@@ -271,8 +263,6 @@ Interfejs predstavlja nacrt klase. Sadrži apstraktne, statične, podrazumevane 
 interface Employee {
 	public void display(); #podrazumevano apstraktna
 	default void work(){System.out.println("Working"); }
-class Driver implements Employee{  
-   	 public void display(){...}
 \end{lstlisting}
 
 
