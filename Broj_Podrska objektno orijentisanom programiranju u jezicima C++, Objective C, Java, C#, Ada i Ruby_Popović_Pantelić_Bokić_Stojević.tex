@@ -73,15 +73,25 @@ U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite paž
 \section{Uvod}
 \label{sec:uvod}
 
-Kada budete predavali seminarski rad, imenujete datoteke tako da sadrže redni broj teme, temu seminarskog rada, kao i prezimena članova grupe. Precizna uputstva na temu imenovnja će biti data na formi za predaju seminarskog rada. Predaja seminarskih radova biće isključivo preko veb forme, a NE slanjem mejla. Link na formu će biti dat u okviru obaveštenja na strani kursa. Vodite računa da prilikom predavanja seminarskog rada predate samo one fajlove koji su neophodni za ponovno generisanje pdf datoteke. To znači da pomoćne fajlove, kao što su .log, .out, .blg, .toc, .aux i slično, \textbf{ne treba predavati}.
-
-SAMO SAM IZDVOJIO IZ JAVE,BOLJE U UVOD DA SE UKOMBINUJE
-Podela prema tekstu \cite{oopJava}:
-\begin{itemize}
-  \item Po nivoima, kada klasu A nasleđuje klasa B, a nju nasleđuje klasa C.
-  \item Hijerarhijsko nasleđivanje, gde klase B i C nasleđuju klasu A.
-  \item Višestruko nasleđivanje, nasleđivanje više klasa.
-\end{itemize}
+\textbf{Programska paradigma} je osnovni stil programiranja, način klasifikovanja programskih jezika na osnovu njihovih karakteristika. Programski jezici (u daljem tekstu jezici) često mogu da se klasifikuju u više od jedne paradigme. Najčešće programske paradigme su:
+\begin{enumerate}
+\item \textbf{Proceduralna} 
+\item \textbf{Objektno-orijentisana}
+\item \textbf{Funkcionalna}
+\item \textbf{Logička}
+\end{enumerate}
+Proceduralna paradigma fokus stavlja na promenljive, funkcionalna na matematičke funkcije, logička na logičke izraze, dok u objektno-orijentisanoj paradigmi fokus je na  \textbf{objektima}. Objekti imaju svoje interno stanje (atribute) i svoje ponašanje (metode).  I metode i atributi mogu a ne moraju biti vidljivi spoljašnjem svetu. Srž objektno-orijentisanog programiranja je u slanju poruka i odgovaranju na njih.  Ovu paradigmu najbolje opisuje  tzv. {\em Tell dont ask} princip- 
+\begin{quotation} 
+Nemoj da tražiš informaciju koja ti treba da bi uradio posao. Umesto toga, pitaj objekat koji ima tu informaciju da odradi taj posao za tebe. {\em (Allen Hollub- Hollub on Patterns)} 
+\end{quotation}
+Osnovni principi objektno-orijentisane paradigme:
+\begin{enumerate}
+\item \textbf{Princip jedinstvene odgovornosti-}  Svaka klasa treba da ima samo jedan zadatak. Čim klasa ima više od jednog zadatka, verovatno bi mogla da se podeli u 2 klase.
+\item \textbf{Enkapsulacija-} i {\em Tell dont ask} princip su usko vezani. Vidljivost podataka je osnovni način enkapsulacije. U većini programskih jezika, postoje 3 osnovna nivoa vidljivosti- public, protected i private.
+\item \textbf{Nasleđivanje-} podrazumeva da jedna klasa "nasledi" sve metode i atribute svoje nadklase, sem kad su metode i atributi proglašeni privatnim. Uspostavlja odnos "jeste" izmedju klasa- ako klasa A nasleđuje klasu B, kaže se da A "jeste" B. Klasa B se naziva nadklasom klase A. 
+\item \textbf{Polimorfizam-} označava da klase koje implementiraju isti interfejs mogu da rade različite stvari, dok god se drže principa tog interfejsa. 
+\item \textbf{Apstrakcija-} je termin koji se veže za {\em interfejse} i {\em apstraktne klase}. \textbf{Interfejsi} se koriste za opisivanje ponašanja klase, definišu javni API (Application programming interface) klase, odnosno metode koje klasa mora da implementira da bi program radio. Oni ne mogu biti instancirani, mogu imati samo potpise metoda, bez tela, ne mogu imati atribute i sve metode moraju biti javne. \textbf{Apstraktne klase} su slične interfejsima, ali za razliku od njih metode apstraktnih klasa mogu da imaju telo, mogu da imaju atribute i mogu imati sva moguća prava pristupa (public, protected, private). 
+\end{enumerate}
 
 \newpage
 
@@ -419,7 +429,7 @@ Ovde pišem zaključak.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
-\bibliography{seminarski} 
+\bibliography{seminarski.bib} 
 \bibliographystyle{plain}
 
 \appendix
