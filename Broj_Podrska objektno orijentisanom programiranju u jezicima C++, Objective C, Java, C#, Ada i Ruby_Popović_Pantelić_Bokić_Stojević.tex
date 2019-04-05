@@ -5,11 +5,10 @@
 
 \usepackage{color}
 \usepackage{url}
-\usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
 
-\usepackage[english,serbian]{babel}
+\usepackage[english]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
 
 \usepackage[unicode]{hyperref}
@@ -298,13 +297,52 @@ interface Employee {
 \section{C\#}
 \label{sec:csharp}
 
-C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podrsku objektno orijentisanom programiranju ukljucujuci nasledjivanje, enkapsulaciju, apstrakciju, I polimorfizam.
+C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podrsku objektno orijentisanom programiranju ukljucujuci nasledjivanje, enkapsulaciju, apstrakciju, I polimorfizam.\\
+\\
+Ne podrzava druge paradigme ali koristi svoje imperativne strukture. Veome je slicna podrska OOP-u kao kod Java programskog jezika takodje su iste I klase I strukture.\\
 
+\subsection{Enkapsulacija}
+\label{subsec:csharpEnkapsulacija}
+
+Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih clanova tretira kao jedan isti objekat.
+C\# podrzava sledece specifikatore pristupa:
 \begin{itemize}
-  \item Nasledjivanje je, kao sto samo ime kaze, mogucnost da “nasledjuje” metode I svojstva od postojecih klasa.
-  \item Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih clanova tretira kao jedan isti objekat.
-  \item Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povecanja efikasnosti.
+\item Public:
+Dopusta klasi da izlozi varijable i funkcije clanova drugim funkcijama i objektima. Svakom public clanu se moze pristupiti izvan klase.
+
+\item Private:
+Dopusta klasi da sakrije promenljive i funkcije clanova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim clanovima.  Cak i instanca klase ne moze pristupiti svojim privatnim clanovima.\\
+
+\item Protected:
+Dopusta podredjenoj klasi da pristupi  varijablama i funkcijama clanova svoje osnovne klase. Na taj nacin pomaze u implementiranju nasledjivanja.\\
+
+\item Internal:
+Dopusta klasi da izlozi varijable i funkcije clanova drugim funkcijama i objektima u trenutnom skupu. Tacnije svakom clanu sa ovim specifikatorom pristupa se moze pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.\\
+
+\item Protected internal:
+Dopusta klasi da sakrije promenljive i funkcije clanova od ostalih funkcija i objekata klase, osim podredjene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasledjivanja.\\
 \end{itemize}
+
+\subsection{Nasledjivanje}
+\label{subsec:csharpNasledjivanje}
+
+Nasledjivanje je, kao sto samo ime kaze, mogucnost da “nasledjuje” metode I svojstva od postojecih klasa.\\
+Kod c\# nasledjivanja, klasa ciji su clanovi nasledjeni se zove bazicna (roditeljska) klasa, a klasa koja nasledjuje clanove bazicne klase se zove izvedena (podredjena) klasa.\\
+C\# Koristi sintaksu c++ za definisanje klasa.\\
+Nasledjena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definise kao new(novo).\\
+Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().\\
+
+\subsection{Polimorfizam}
+\label{subsec:csharpPolimorfizam}
+
+U c\#-u, polimorfizam omogucava klasama da da implementiraju razlicite metode koje se nazivaju istim imenom i omogucava pozivanje metoda izvedene klase kroz referencu bazicne klase tokom izvodjena, na osnovu nasih zahteva.\\
+U c\#-u imamo dve razlicite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvodjenja.\\
+
+\subsection{Apstrakcija}
+\label{subsec:csharpApstrakcija}
+
+Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povecanja efikasnosti.\\
+U c\#-u mozemo napraviti klasu sa potrebnim metodama i svojstvima i mozemo izloziti samo potrebne metode i svojstva koristeci modifikatore pristupa na osnovu nasih zahteva. \\
 
 \begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
 abstract class MobilePhone {  
@@ -325,40 +363,6 @@ public class BlackBerry: MobilePhone {
     public void ReadAndSendEmails();  
 } 
 \end{lstlisting}
-
-Ne podrzava druge paradigme ali koristi svoje imperativne strukture. Veome je slicna podrska OOP-u kao kod Java programskog jezika takodje su iste I klase I strukture.\\
-
-\subsection{Nasledjivanje}
-\label{subsec:csharpNasledjivanje}
-
-Koristi sintaksu c++ za definisanje klasa.\\
-Nasledjena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definise kao new(novo).\\
-Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().\\
-
-\subsection{Dinamicko vezivanje}
-\label{subsec:csharpDinamickoVezivanje}
-
-Da bi se dozvolilo dinamicko vezivanje metoda pozivaju se metode:\\
-
-\begin{itemize}
-  \item Bazicna klasa metode, oznacava se kao virtual
-  \item Odgovarajuce metode u izvedenim klasama, oznacene su kao override
-  \item Apstraktne metode, oznacene su kao abstract I moraju biti implementirane u svim podklasama.
-\end{itemize}
-
-Sve C\# klase su izvedene od jedinog korena klase, Objekta.\\
-
-\subsection{Ugnjezdene klase}
-\label{subsec:csharpUgnjezdeneKlase}
-
-C\# klasa koja je direktno ugnjezdena u ugnjezdene klase se ponasa kao staticka java ugnjezdena klasa.\\
-C\# ne podrzava ugnjezdene klase koje se ponasaju kao ne staticke java klase.\\
-
-\subsection{Evaluacija}
-\label{subsec:csharpEvaluacija}
-
-C\# je najskorije dizajniran OOP jezik na bazi C-a.\\
-Razlika izmedju podrske C\#-a I Javine podrske za OOP su relativno male.\\
 
 \section{Ada}
 \label{sec:ada}
