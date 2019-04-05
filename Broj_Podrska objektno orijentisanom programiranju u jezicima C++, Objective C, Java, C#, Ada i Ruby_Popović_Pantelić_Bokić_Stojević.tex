@@ -5,10 +5,11 @@
 
 \usepackage{color}
 \usepackage{url}
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
 
-\usepackage[english]{babel}
+\usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
 
 \usepackage[unicode]{hyperref}
@@ -56,7 +57,7 @@
 
 \title{\Large Podrška objektno orijentisanom programiranju u jezicima C++, Objective C, Java, C\#, Ada i Ruby\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
 
-\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ kontakt email prvog, pantelic.dusan@protonmail.com, trećeg, nikolastojevic@gmail.com}
+\author{Katarina Popović, Dušan Pantelić, Dejan Bokić, Nikola Stojević\\ ai17210@alas.matf.bg.ac.rs, pantelic.dusan@protonmail.com,\\ mrdejan995@gmail.com, nikolastojevic@gmail.com}
 
 %\date{9.~april 2015.}
 
@@ -278,14 +279,14 @@ Koncept preopterećenosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2
 
 Izdvajanje skupa metoda sa kojima spoljašnji korisnik komunicira, prema artiklu \cite{oopJava}, vršimo pomoću apstraktnih klasa ili interfejsa.
 
-Za apstraktne klase navodimo ključnu reč~{\em \textbf{abstract}}(kod \ref{lst:javaAbstract}). Ne mogu se instancirati, ali može biti tip promenljive. Sadrže apstraktne metode(istom ključnom reči obeležavaju) koje treba da predefiniše neka podklasa.
+Za apstraktne klase navodimo ključnu reč~{\em \textbf{abstract}}(kod \ref{lst:javaAbstract}). Ne mogu se instancirati, ali može biti tip promenljive. Sadrže apstraktne metode koje treba da predefiniše neka podklasa.
 
 \begin{lstlisting}[caption={Apstraktna klasa},frame=single, label=lst:javaAbstract]
 public abstract class Employee {
 	public abstract void display(); ...
 \end{lstlisting}
 
-Interfejs predstavlja nacrt klase. Sadrži apstraktne, statične, podrazumevane metode(mogu se predefinisati u klasi) i statičke promenljive. Da implementiramo interfejs navodimo ključnu reč~{\em \textbf{implements}}(kod \ref{lst:javaInterfejs}) i zatim ime interfejsa(slično nasleđivanju). Prednost interfejsa\cite{horstmann2017core} je da klasa može implementirati više interfejsa, dok može da nasleđuje samo jednu klasu.
+Interfejs predstavlja nacrt klase. Sadrži apstraktne, statične, podrazumevane metode(mogu se predefinisati u klasi) i statičke promenljive. Da implementiramo interfejs navodimo ključnu reč~{\em \textbf{implements}}(kod \ref{lst:javaInterfejs}) i zatim ime interfejsa. Prednost interfejsa\cite{horstmann2017core} je da klasa može implementirati više interfejsa, dok može da nasleđuje samo jednu klasu.
 
 \begin{lstlisting}[caption={Interfejs},frame=single, label=lst:javaInterfejs]
 interface Employee {
@@ -297,52 +298,54 @@ interface Employee {
 \section{C\#}
 \label{sec:csharp}
 
-C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podrsku objektno orijentisanom programiranju ukljucujuci nasledjivanje, enkapsulaciju, apstrakciju, I polimorfizam.\\
-\\
-Ne podrzava druge paradigme ali koristi svoje imperativne strukture. Veome je slicna podrska OOP-u kao kod Java programskog jezika takodje su iste I klase I strukture.\\
+C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podršku objektno orijentisanom programiranju uključujući nasleđivanje, enkapsulaciju, apstrakciju, I polimorfizam.
+
+Ne podržava druge paradigme ali koristi svoje imperativne strukture. Veome je slična podrška OOP-u kao kod Java programskog jezika takođe su iste I klase I strukture.
 
 \subsection{Enkapsulacija}
 \label{subsec:csharpEnkapsulacija}
 
-Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih clanova tretira kao jedan isti objekat.
-C\# podrzava sledece specifikatore pristupa:
+Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih članova tretira kao jedan isti objekat.
+C\# podrzava sledeće specifikatore pristupa:
 \begin{itemize}
 \item Public:
-Dopusta klasi da izlozi varijable i funkcije clanova drugim funkcijama i objektima. Svakom public clanu se moze pristupiti izvan klase.
+Dopušta klasi da izloži varijable i funkcije članova drugim funkcijama i objektima. Svakom public članu se moze pristupiti izvan klase.
 
 \item Private:
-Dopusta klasi da sakrije promenljive i funkcije clanova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim clanovima.  Cak i instanca klase ne moze pristupiti svojim privatnim clanovima.\\
+Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim članovima.  Čak i instanca klase ne moze pristupiti svojim privatnim članovima.
 
 \item Protected:
-Dopusta podredjenoj klasi da pristupi  varijablama i funkcijama clanova svoje osnovne klase. Na taj nacin pomaze u implementiranju nasledjivanja.\\
+Dopušta podređenoj klasi da pristupi  varijablama i funkcijama članova svoje osnovne klase. Na taj način pomaže u implementiranju nasleđivanja.
 
 \item Internal:
-Dopusta klasi da izlozi varijable i funkcije clanova drugim funkcijama i objektima u trenutnom skupu. Tacnije svakom clanu sa ovim specifikatorom pristupa se moze pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.\\
+Dopušta klasi da izlozi varijable i funkcije članova drugim funkcijama i objektima u trenutnom skupu. Tačnije svakom članu sa ovim specifikatorom pristupa se moze pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.
 
 \item Protected internal:
-Dopusta klasi da sakrije promenljive i funkcije clanova od ostalih funkcija i objekata klase, osim podredjene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasledjivanja.\\
+Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata klase, osim podređene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasleđivanja.
 \end{itemize}
 
-\subsection{Nasledjivanje}
+\subsection{Nasleđivanje}
 \label{subsec:csharpNasledjivanje}
 
-Nasledjivanje je, kao sto samo ime kaze, mogucnost da “nasledjuje” metode I svojstva od postojecih klasa.\\
-Kod c\# nasledjivanja, klasa ciji su clanovi nasledjeni se zove bazicna (roditeljska) klasa, a klasa koja nasledjuje clanove bazicne klase se zove izvedena (podredjena) klasa.\\
-C\# Koristi sintaksu c++ za definisanje klasa.\\
-Nasledjena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definise kao new(novo).\\
-Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().\\
+Nasleđivanje je, kao sto samo ime kaze, mogućnost da “nasleđuje” metode I svojstva od postojećih klasa.
+Kod c\# nasleđivanja, klasa čiji su članovi nasleđeni se zove bazična (roditeljska) klasa, a klasa koja nasleđuje članove bazične klase se zove izvedena (podređena) klasa.
+
+C\# Koristi sintaksu c++ za definisanje klasa.
+Nasleđena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definiše kao new(novo).
+Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().
 
 \subsection{Polimorfizam}
 \label{subsec:csharpPolimorfizam}
 
-U c\#-u, polimorfizam omogucava klasama da da implementiraju razlicite metode koje se nazivaju istim imenom i omogucava pozivanje metoda izvedene klase kroz referencu bazicne klase tokom izvodjena, na osnovu nasih zahteva.\\
-U c\#-u imamo dve razlicite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvodjenja.\\
+U c\#-u, polimorfizam omogućava klasama da da implementiraju različite metode koje se nazivaju istim imenom i omogućava pozivanje metoda izvedene klase kroz referencu bazične klase tokom izvođena, na osnovu naših zahteva.
+
+U c\#-u imamo dve različite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvođenja.
 
 \subsection{Apstrakcija}
 \label{subsec:csharpApstrakcija}
 
-Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povecanja efikasnosti.\\
-U c\#-u mozemo napraviti klasu sa potrebnim metodama i svojstvima i mozemo izloziti samo potrebne metode i svojstva koristeci modifikatore pristupa na osnovu nasih zahteva. \\
+Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povećanja efikasnosti.
+U c\#-u mozemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
 
 \begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
 abstract class MobilePhone {  
