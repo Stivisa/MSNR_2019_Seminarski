@@ -73,14 +73,10 @@ U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite paž
 \section{Uvod}
 \label{sec:uvod}
 
-\textbf{Programska paradigma} je osnovni stil programiranja, način klasifikovanja programskih jezika na osnovu njihovih karakteristika. Programski jezici (u daljem tekstu jezici) često mogu da se klasifikuju u više od jedne paradigme. Najčešće programske paradigme su:
-\begin{enumerate}
-\item \textbf{Proceduralna} 
-\item \textbf{Objektno-orijentisana}
-\item \textbf{Funkcionalna}
-\item \textbf{Logička}
-\end{enumerate}
-Proceduralna paradigma fokus stavlja na promenljive, funkcionalna na matematičke funkcije, logička na logičke izraze, dok u objektno-orijentisanoj paradigmi fokus je na  \textbf{objektima}. Objekti imaju svoje interno stanje (atribute) i svoje ponašanje (metode).  I metode i atributi mogu a ne moraju biti vidljivi spoljašnjem svetu. Srž objektno-orijentisanog programiranja je u slanju poruka i odgovaranju na njih.  Ovu paradigmu najbolje opisuje  tzv. {\em Tell dont ask} princip- 
+\textbf{Programska paradigma} je osnovni stil programiranja, način klasifikovanja programskih jezika na osnovu njihovih karakteristika. Programski jezici (u daljem tekstu jezici) često mogu da se klasifikuju u više od jedne paradigme.
+
+Najčešće programske paradigme su:
+proceduralna (fokus stavlja na promenljive), funkcionalna (fokus na matematičkim funkcijama), logička (fokus na logičkim izrazima) i objektno-orijentisana paradigma (fokus je na  \textbf{objektima}). Objekti imaju svoje interno stanje (atribute) i svoje ponašanje (metode).  I metode i atributi mogu a ne moraju biti vidljivi spoljašnjem svetu. Srž objektno-orijentisanog programiranja je u slanju poruka i odgovaranju na njih.  Ovu paradigmu najbolje opisuje  tzv. {\em Tell dont ask} princip- 
 \begin{quotation} 
 Nemoj da tražiš informaciju koja ti treba da bi uradio posao. Umesto toga, pitaj objekat koji ima tu informaciju da odradi taj posao za tebe. {\em (Allen Hollub- Hollub on Patterns)} 
 \end{quotation}
@@ -89,9 +85,18 @@ Osnovni principi objektno-orijentisane paradigme:
 \item \textbf{Princip jedinstvene odgovornosti-}  Svaka klasa treba da ima samo jedan zadatak. Čim klasa ima više od jednog zadatka, verovatno bi mogla da se podeli u 2 klase.
 \item \textbf{Enkapsulacija-} i {\em Tell dont ask} princip su usko vezani. Vidljivost podataka je osnovni način enkapsulacije. U većini programskih jezika, postoje 3 osnovna nivoa vidljivosti- public, protected i private.
 \item \textbf{Nasleđivanje-} podrazumeva da jedna klasa "nasledi" sve metode i atribute svoje nadklase, sem kad su metode i atributi proglašeni privatnim. Uspostavlja odnos "jeste" izmedju klasa- ako klasa A nasleđuje klasu B, kaže se da A "jeste" B. Klasa B se naziva nadklasom klase A. 
+Vrste nasleđivanja prikazane su na slici \ref{fig:VrsteNasledjivanja}.
 \item \textbf{Polimorfizam-} označava da klase koje implementiraju isti interfejs mogu da rade različite stvari, dok god se drže principa tog interfejsa. 
 \item \textbf{Apstrakcija-} je termin koji se veže za {\em interfejse} i {\em apstraktne klase}. \textbf{Interfejsi} se koriste za opisivanje ponašanja klase, definišu javni API (Application programming interface) klase, odnosno metode koje klasa mora da implementira da bi program radio. Oni ne mogu biti instancirani, mogu imati samo potpise metoda, bez tela, ne mogu imati atribute i sve metode moraju biti javne. \textbf{Apstraktne klase} su slične interfejsima, ali za razliku od njih metode apstraktnih klasa mogu da imaju telo, mogu da imaju atribute i mogu imati sva moguća prava pristupa (public, protected, private). 
 \end{enumerate}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6]{slike/nasledjivanje.jpg}
+\end{center}
+\caption{Vrste nasledjivanja}
+\label{fig:VrsteNasledjivanja}
+\end{figure}
 
 \newpage
 
@@ -241,7 +246,21 @@ class Driver extends Employee {
 \subsection{Enkapsulacija}
 \label{subsec:javaEnkapsulacija}
 
-Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi. Ovo znači da se podacima može pristupiti isključivo iz deklarisane klase. Ako su podaci ipak potrebni van klase, omogućuje se njihovo čitanje i menjanje, preko javnih metode pristupa (eng. ~{\em getters and setters})\cite{horstmann2017core}. U primeru(\ref{lst:javaDeklaracija}), vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
+Ograničavanje pristupa internim podacima klase postižemo navođenjem ključne reči ~{\em \textbf{private}} ispred deklaracije promenljive u klasi. Private modifikator pristupa znači da se podacima može pristupiti isključivo iz deklarisane klase. Modifikatori i njihova vidljivost prikazani u tabeli \ref{tab:tabelaModPristupa}. Ako su podaci ipak potrebni van klase, omogućuje se njihovo čitanje i menjanje, preko javnih metode pristupa (eng. ~{\em getters and setters})\cite{horstmann2017core}. U primeru(\ref{lst:javaDeklaracija}), vrednosti privatnog atributa plata možemo pristupiti metodom getSalary() ili menjati sa setSalary(newSalary).
+
+\begin{table}[h!]
+\begin{center}
+\caption{Vidljivost različitih modifikatora pristupa.}
+\begin{tabular}{|l|c|c|c|c|} \hline
+Modifikator &Klasa &Paket &Podklasa &Svet\\ \hline
+public &Da &Da &Da &Da\\ \hline
+protected &Da &Da &Da &Ne\\ \hline
+podrazumevani &Da &Da &Ne &Ne\\ \hline
+private &Da &Ne &Ne &Ne\\ \hline
+\end{tabular}
+\label{tab:tabelaModPristupa}
+\end{center}
+\end{table}
 
 \subsection{Nasleđivanje}
 \label{subsec:javaNasledjivanje}
@@ -444,14 +463,5 @@ Ovde pišem zaključak.
 \appendix
 \bibliography{seminarski} 
 \bibliographystyle{plain}
-
-\appendix
-\section{Dodatak}
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-
 
 \end{document}
