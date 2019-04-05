@@ -344,23 +344,35 @@ Razlika izmedju podrske C\#-a I Javine podrske za OOP su relativno male.\\
 \section{Ada}
 \label{sec:ada}
 
-Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima(eng. ~{\em types}) deklarisanim u jedinicama paketa(eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa(eng. ~{\em root type}) unutar paketa. Svakom tipu je pridruzena oznaka(eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa.
+Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima(eng. ~{\em types}) deklarisanim u jedinicama paketa(eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa(eng. ~{\em root type}) unutar paketa. Svakom tipu je pridružena oznaka(eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa. Unutar paketa možemo imati procedure(nemaju povratnu vrednost) i funkcije(imaju povratnu vrednost). U nastavku možemo videti primer(\ref{lst:adaDeklaracija}) OOP u Adi.
 
-\begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
+\begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ada.},frame=single, label=lst:adaDeklaracija]
 package Employees is 
 	type Employee is tagged 
 	record
-		Name: Name_Type;
-	endrecord;
+		Name: String;
+	end record;
 	procedure Set_Name(Obj: in out Employee; Name: Name_Type);
 end Employees;
 package Drivers
 type Driver is new Employees.Employee with record
-
+	null;
 end record;
-
-end Drivers;
 \end{lstlisting}
+
+\subsection{Enkapsulacija}
+\label{subsec:adaEnkapsulacija}
+U Adi, enkapsulacija je malo drugačija od većine OOP jezika jer je privatnost generalno određena na nivou paketa\cite{adaIntroduction}. Pomoću ključne reči \textbf{private} u deklaraciji baznog tipa obezbeđujemo da podacima unutar tipa pristupamo jedino pomoću funkcija i procedura. Još veći stepen privatnosti dobijamo dodavanjem ključne reči \textbf{limited} ispred ključne reči \textbf{private}. Procedure i funkcije unutar paketa deklarišemo kao privatne ukoliko ispred niza deklaracija procedura i funkcija dodamo ključnu reč \textbf{private}.
+
+\subsection{Nasleđivanje}
+\label{subsec:adaNasledjivanje}
+Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je direktno podržano u Adi, dok je višestruko nasleđivanje moguće implementirati pomoću interfejsa(eng. ~{\em interface}) uz dodatni rad programera. U primeru(\ref{lst:adaDeklaracija}) deklaracija klase \textit{Driver} je tipičan primer kreiranja izvedenog tipa. Izvedeni tip nasleđuje sve podatke unutar tipa, kao i sve procedure i funkcije rodjiteljskog tipa.
+
+\subsection{Polimorfizam}
+\label{subsec:adaPolimorfizam}
+
+\subsection{Apstrakcija}
+\label{subsec:adaApstrakcija}
 
 \section{Ruby}
 \label{sec:ruby}
