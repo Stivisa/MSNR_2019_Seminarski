@@ -64,7 +64,7 @@
 \maketitle
 
 \abstract{
-U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite pažnju da je pored ove .pdf datoteke, u prilogu i odgovarajuća .tex datoteka, kao i .bib datoteka korišćena za generisanje literature. Na prvoj strani seminarskog rada su naslov, apstrakt i sadržaj, i to sve mora da stane na prvu stranu! Kako bi Vaš seminarski zadovoljio standarde i očekivanja, koristite uputstva i materijale sa predavanja na temu pisanja seminarskih radova. Ovo je samo šablon koji se odnosi na fizički izgled seminarskog rada (šablon koji \emph{morate} da koristite!) kao i par tehničkih pomoćnih uputstava. Pročitajte tekst pažljivo jer on sadrži i važne informacije vezane za zahteve obima i karakteristika seminarskog rada.}
+Kroz ovaj seminarski rad čitalac će biti upućen u objektno-orijentisano programiranje. Pre svega, kakvu i na koji način mu podršku pružaju programski jezici C++, Objective C, Java, C\#, Ada i Ruby. Predstavljene su karakteristike i principi objektno-orijentisane paradigme, koji su najviše zaslužni za stečenu popularnost. Posebno je stavljen naglasak na enkapsulaciju, nasleđivanje, polimorfizam i apstrakciju. Objašnjeno je kako se ovi principi ostvaruju u navedenim programskim jezicima, naravno sa konkretnim primerima kako to izgleda u kodu.
 
 \tableofcontents
 
@@ -309,16 +309,16 @@ Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih članova
 C\# podrzava sledeće specifikatore pristupa:
 \begin{itemize}
 \item Public:
-Dopušta klasi da izloži varijable i funkcije članova drugim funkcijama i objektima. Svakom public članu se moze pristupiti izvan klase.
+Dopušta klasi da izloži varijable i funkcije članova drugim funkcijama i objektima. Svakom public članu se može pristupiti izvan klase.
 
 \item Private:
-Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim članovima.  Čak i instanca klase ne moze pristupiti svojim privatnim članovima.
+Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim članovima.  Čak i instanca klase ne može pristupiti svojim privatnim članovima.
 
 \item Protected:
 Dopušta podređenoj klasi da pristupi  varijablama i funkcijama članova svoje osnovne klase. Na taj način pomaže u implementiranju nasleđivanja.
 
 \item Internal:
-Dopušta klasi da izlozi varijable i funkcije članova drugim funkcijama i objektima u trenutnom skupu. Tačnije svakom članu sa ovim specifikatorom pristupa se moze pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.
+Dopušta klasi da izlozi varijable i funkcije članova drugim funkcijama i objektima u trenutnom skupu. Tačnije svakom članu sa ovim specifikatorom pristupa se može pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.
 
 \item Protected internal:
 Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata klase, osim podređene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasleđivanja.
@@ -327,7 +327,7 @@ Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i 
 \subsection{Nasleđivanje}
 \label{subsec:csharpNasledjivanje}
 
-Nasleđivanje je, kao sto samo ime kaze, mogućnost da “nasleđuje” metode I svojstva od postojećih klasa.
+Nasleđivanje je, kao što samo ime kaže, mogućnost da “nasleđuje” metode I svojstva od postojećih klasa.
 Kod c\# nasleđivanja, klasa čiji su članovi nasleđeni se zove bazična (roditeljska) klasa, a klasa koja nasleđuje članove bazične klase se zove izvedena (podređena) klasa.
 
 C\# Koristi sintaksu c++ za definisanje klasa.
@@ -345,7 +345,7 @@ U c\#-u imamo dve različite vrste polimorfizma a to su: Polimorfizam vremena ko
 \label{subsec:csharpApstrakcija}
 
 Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povećanja efikasnosti.
-U c\#-u mozemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
+U c\#-u možemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
 
 \begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
 abstract class MobilePhone {  
@@ -452,19 +452,9 @@ Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može dob
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-
+U ovom radu su objašnjene najvažnije karakteristike objektno-orijentisanog programiranja,
+od teorijskog uvoda u principe, do konkretne podrške tih principa u jezicima.
+Kroz izložene primere programski jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenij tema.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
