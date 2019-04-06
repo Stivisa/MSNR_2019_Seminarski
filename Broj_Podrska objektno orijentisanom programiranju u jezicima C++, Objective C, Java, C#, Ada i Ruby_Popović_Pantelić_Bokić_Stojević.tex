@@ -166,17 +166,17 @@ Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u 
 @property(nonatomic, readwrite) double salary; 
 - (void)display;
 @end
-
+# `-' za metode instance, `+' za klasne metode(static)
 @implementation Employee
 @synthesize salary; 
 - (void)display { NSLog(@"Employee salary is %f", salary); }
 @end
-
+# (id) tip koji je kompaktibilan svakom objektu
 @interface Driver : Employee {
    NSString* truck;}
 - (id)initWithTruck:(NSString*)model;
 @end
-
+# self oznacava tekuci objekat
 @implementation Driver
 - (id)initWithTruck:(NSString*)model {
    truck = model;	return self;
@@ -460,6 +460,8 @@ Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može imp
 
 U ovom radu su objašnjene najvažnije karakteristike objektno-orijentisanog programiranja,
 od teorijskog uvoda u principe, do konkretne podrške tih principa u jezicima.
+Uviđamo popularnost objektno-orijentisanog programiranja zbog osobina poput modularnosti, jednostavnog održavanja i modifikovanja postojećeg koda, višestruka upotreba koda.
+Primećuje se da različiti jezici na različite načine podržavaju određene koncepte, neke i ne podržavaju, dok za druge pružaju alternativne načine za njihovo ostvarivanje.
 Kroz izložene primere programski jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenih tema.
 
 \addcontentsline{toc}{section}{Literatura}
