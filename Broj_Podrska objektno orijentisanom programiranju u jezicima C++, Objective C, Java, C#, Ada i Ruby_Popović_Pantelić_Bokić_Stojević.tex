@@ -328,24 +328,24 @@ Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i 
 \label{subsec:csharpNasledjivanje}
 
 Nasleđivanje je, kao što samo ime kaže, mogućnost da “nasleđuje” metode I svojstva od postojećih klasa.
-Kod c\# nasleđivanja, klasa čiji su članovi nasleđeni se zove bazična (roditeljska) klasa, a klasa koja nasleđuje članove bazične klase se zove izvedena (podređena) klasa.
+Kod C\# nasleđivanja, klasa čiji su članovi nasleđeni se zove bazična (roditeljska) klasa, a klasa koja nasleđuje članove bazične klase se zove izvedena (podređena) klasa.
 
-C\# Koristi sintaksu c++ za definisanje klasa.
+C\# Koristi sintaksu C++ za definisanje klasa.
 Nasleđena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definiše kao new(novo).
 Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().
 
 \subsection{Polimorfizam}
 \label{subsec:csharpPolimorfizam}
 
-U c\#-u, polimorfizam omogućava klasama da da implementiraju različite metode koje se nazivaju istim imenom i omogućava pozivanje metoda izvedene klase kroz referencu bazične klase tokom izvođena, na osnovu naših zahteva.
+U C\#-u, polimorfizam omogućava klasama da da implementiraju različite metode koje se nazivaju istim imenom i omogućava pozivanje metoda izvedene klase kroz referencu bazične klase tokom izvođena, na osnovu naših zahteva.
 
-U c\#-u imamo dve različite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvođenja.
+U C\#-u imamo dve različite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvođenja.
 
 \subsection{Apstrakcija}
 \label{subsec:csharpApstrakcija}
 
 Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povećanja efikasnosti.
-U c\#-u možemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
+U C\#-u možemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
 
 \begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
 abstract class MobilePhone {  
@@ -370,7 +370,7 @@ public class BlackBerry: MobilePhone {
 \section{Ada}
 \label{sec:ada}
 
-Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima(eng. ~{\em types}) deklarisanim u jedinicama paketa(eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa(eng. ~{\em root type}) unutar paketa. Svakom tipu je pridružena oznaka(eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa. Unutar paketa možemo imati procedure(nemaju povratnu vrednost) i funkcije(imaju povratnu vrednost). U nastavku možemo videti primer(\ref{lst:adaDeklaracija}) OOP u Adi.
+Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima(eng. ~{\em types}) deklarisanim u jedinicama paketa(eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa(eng. ~{\em root type}) unutar paketa. Svakom tipu je pridružena oznaka(eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa. Unutar paketa možemo imati procedure(nemaju povratnu vrednost) i funkcije(imaju povratnu vrednost). U nastavku možemo videti primer(\ref{lst:adaDeklaracija}) OOP u Adi(u primeru su navedene samo deklaracije zbog kompaktnosti).
 
 \begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ada.},frame=single, label=lst:adaDeklaracija]
 package Employees is 
@@ -378,12 +378,16 @@ package Employees is
 	record
 		Name: String;
 	end record;
-	procedure Set_Name(Obj: in out Employee; Name: Name_Type);
+	procedure Set_Name(Obj: in out Employee; Name: String);
+	function Print(E: Employee) return String;
 end Employees;
 package Drivers
-type Driver is new Employees.Employee with record
-	null;
-end record;
+	type Driver is new Employees.Employee with record
+		Driver_ID: Integer;
+	end record;
+	procedure Set_D(Obj: in out Employee; Name: String);
+	overriding function Print(D: Driver) return String;
+end Drivers;
 \end{lstlisting}
 
 \subsection{Enkapsulacija}
@@ -392,17 +396,19 @@ U Adi, enkapsulacija je malo drugačija od većine OOP jezika jer je privatnost 
 
 \subsection{Nasleđivanje}
 \label{subsec:adaNasledjivanje}
-Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je direktno podržano u Adi, dok je višestruko nasleđivanje moguće implementirati pomoću interfejsa(eng. ~{\em interface}) uz dodatni rad programera. U primeru(\ref{lst:adaDeklaracija}) deklaracija klase \textit{Driver} je tipičan primer kreiranja izvedenog tipa. Izvedeni tip nasleđuje sve podatke unutar tipa, kao i sve procedure i funkcije rodjiteljskog tipa.
+Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je direktno podržano u Adi, dok je višestruko nasleđivanje moguće implementirati pomoću interfejsa(eng. ~{\em interface}) uz dodatni rad programera. U primeru(\ref{lst:adaDeklaracija}) deklaracija tipa \textit{Driver} je tipičan primer kreiranja izvedenog tipa. Izvedeni tip nasleđuje sve podatke unutar tipa, kao i sve procedure i funkcije rodjiteljskog tipa.
 
 \subsection{Polimorfizam}
 \label{subsec:adaPolimorfizam}
+Korišćenjem ključne reči \textbf{overriding} ispred deklaracije funkcije ili procedure u izvedenom tipu postižemo polimorfizam pomoću nasleđivanja koji se najintenzivnije koristi. Polimorfizam takođe postižemo korišćenjem apstraktnih tipova gde za različite izvedene tipove različito implmentiramo procedure i funkcije koje nisu definisane. Još jedan način za postizanje polimorfizma je pomoću podtipova(eng. ~{\em subtypes}) o kojima neće biti reči.
 
 \subsection{Apstrakcija}
 \label{subsec:adaApstrakcija}
+Ada pruža podršku apstraktnim tipovima čije je ponašanje skoro identično ponašanju apstraktnih klasi drugih OOP jezika. Tip postaje apstraktan dodavanjem ključne reči \textbf{abstract} u njegovoj deklaraciji.  Apstraktni tip bez komponenti nazivamo interfejsom(eng. ~{\em interface}). Dodavanjem ključne reči \textbf{abstract} u deklaraciji procedura i funkcija omogućavamo da budu definisane u izvedenim tipovima
 
 \section{Ruby}
 \label{sec:ruby}
- Podršku u programskom jeziku Ruby ilustrovaćemo primerom(\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima.
+ Podršku u programskom jeziku Ruby ilustrovaćemo primerom(\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima\cite{oopRuby}.
 
 \begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
 class Employee
@@ -442,19 +448,19 @@ Kada nakon imena klase u njenoj definicije dodamo znak < za kojim sledi ime već
 \label{subsec:rubyPolimorfizam}
 Osnovni vid polimorfizma možemo postići nasleđivanjem tako sto ce razliciti objekti odgovoriti različito na iste metode. U primeru(\ref{lst:rubyDeklaracija}) u klasi \textit{Driver} smo definisali metod \textit{print} koji je istog naziva kao i nasleđeni metod čime postižemo da instanca klase odgovori različito na metod od instance roditeljske klase. 
 
-Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem"(eng. ~{\em duck typing}) u kojem nisu bitni tipovi objekata već skup istoimenih metoda koje poseduju. Za primer uzmimo klasu \textit{Duck} koja poseduje metod  \textit{quack} i funkciju koja za argument uzima objekat tipa \textit{Duck} i poziva metod \textit{quack}. U tom slučaju funkciji možemo proslediti bilo koji objekat koji poseduje metod naziva \textit{quack}(sa istim ili različitim ponašanjem metoda) i gledati na njega kao da je tipa \textit{Duck} bez obzira što on to nije.
+Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem" (eng. ~{\em duck typing}) u kojem nisu bitni tipovi objekata već skup istoimenih metoda koje poseduju. Za primer uzmimo klasu \textit{Duck} koja poseduje metod  \textit{quack} i funkciju koja za argument uzima objekat tipa \textit{Duck} i poziva metod \textit{quack}. U tom slučaju funkciji možemo proslediti bilo koji objekat koji poseduje metod naziva \textit{quack}(sa istim ili različitim ponašanjem metoda) i gledati na njega kao da je tipa \textit{Duck} bez obzira što on to nije.
 
 \subsection{Apstrakcija}
 \label{subsec:rubyApstrakcija}
-Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može dobiti korišćenjem biblioteke "abstract". Takođe je moguće implementirati apstakciju pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koji pokrecu "NotImplementedError" grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomocu gore opisanog polimorfizma(\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi.
+Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može implementirati\cite{rubyWay}. Apstrakciju je moguće implementirati pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koji pokrecu "NotImplementedError" grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomocu gore opisanog polimorfizma(\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi. Biblioteka \textbf{abstraction} nam olaksava postizanje efekta apstrakcije.
 
-
+\newpage
 \section{Zaključak}
 \label{sec:zakljucak}
 
 U ovom radu su objašnjene najvažnije karakteristike objektno-orijentisanog programiranja,
 od teorijskog uvoda u principe, do konkretne podrške tih principa u jezicima.
-Kroz izložene primere programski jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenij tema.
+Kroz izložene primere programski jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenih tema.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
