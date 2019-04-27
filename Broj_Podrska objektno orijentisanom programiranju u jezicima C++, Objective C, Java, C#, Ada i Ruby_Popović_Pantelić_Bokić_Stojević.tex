@@ -157,7 +157,7 @@ Za razliku od drugih OOP jezika, C++ ne poseduje ključnu rec ~{\em abstract}. A
 \section{Objective C}
 \label{sec:ObjectiveC}
 
-Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u dve sekcije koje se označavaju sa ključnom reči \textbf{@interface} i \textbf{@implementation}, gde se vrši deklaracija i implementacija metoda klase. Obe sekcije se završavaju ključnom reči \textbf{@end}. Svaka klasa je izvedena iz super klase NSObject, čiji konstruktor init je podrazumevani konstruktor, može predefinisati. Moguće je kreirati i svoje konstruktore sa proizvoljnim argumentima,slično ostalim programskim jezicima i mogu se proizvoljno imenovati. Opširnije o ovome u dokumentaciji \cite{ObjectiveCdoc}. U primeru (\ref{ObjectiveC}) vidimo definisanje klase zaposleni (detaljnije \ref{subsec:ObjCEnkapsulacija} ).
+Proces definisanja klasa se malo razlikuje kod jezika Objective C. Obavlja se u dve sekcije koje se označavaju sa ključnom reči \textbf{@interface} i \textbf{@implementation}, gde se vrši deklaracija i implementacija metoda klase. Obe sekcije se završavaju ključnom reči \textbf{@end}. Svaka klasa nasleđuje baznu klasu NSObject, koja sadrži konstruktor init. Ovaj konstruktor se može predefinisati. Moguće je kreirati i svoje konstruktore sa proizvoljnim argumentima, slično ostalim programskim jezicima i mogu se proizvoljno imenovati. Opširnije o ovome u dokumentaciji \cite{ObjectiveCdoc}. U primeru (\ref{ObjectiveC}) vidimo definisanje klase zaposleni (detaljnije \ref{subsec:ObjCEnkapsulacija} ).
 
 \begin{lstlisting}[caption={Primer koda u Objective C jeziku},frame=single, label=ObjectiveC]
 @interface Employee : NSObject {
@@ -206,17 +206,17 @@ Ovaj koncept označavamo sa (:) i imenom klase koju nasleđujemo. Primer (\ref{O
 \subsection{Polimorfizam}
 \label{subsec:ObjCPolimorfizam}
 
-Višestruka upotrebljivost koda u vidu preopterećenosti (eng.~\textbf{\em overloading}) nije omogućeno u Objective C jeziku, tako da se metodi moraju različito imenovati\cite{ObjectiveCbook}. Koncept važnosti metoda(eng.~\textbf{\em overriding})  postoji, i prikazan je u primeru (\ref{ObjectiveC}). Gde klase zaposleni i vozač imaju isti metod display i poziv [empl display] će izvršiti metod klase vozač, zato što promenljiva zaposleni empl referiše na objekat tipa vozač.
+Višestruka upotrebljivost koda u vidu preopterećenosti (eng.~\textbf{\em overloading}) nije omogućeno u Objective C jeziku, tako da se metodi moraju različito imenovati\cite{ObjectiveCbook}. Koncept preklapanja metoda (eng.~\textbf{\em overriding})  postoji, i prikazan je u primeru (\ref{ObjectiveC}). Klase zaposleni i vozač imaju isti metod display i poziv [empl display] će izvršiti metod klase vozač, zato što promenljiva zaposleni empl referiše na objekat tipa vozač.
 
 \subsection{Apstrakcija}
 \label{subsec:ObjCApstrakcija}
 
-Jezik Objective C nema definisan koncept apstraktnih klasa\cite{ObjectiveCbook}, sličan efekat je moguće postići programerskom snalažljivošću i ne instancirati klasu koja bi trebalo biti apstraktna. Za interfejse koje ovde nazivamo protokoli, vezana je ključna reč \textbf{@protocol} jer je \textbf{interface} rezervisana za klase. Sekcija protokola se završava sa \textbf{@end} i može sadžati dve podoblasti \textbf{@required} za metode koji se obavezno moraju implementirati u klasi i \textbf{@optional} za metode čija je implementacija opciona.
+Jezik Objective C nema definisan koncept apstraktnih klasa \cite{ObjectiveCbook}. Sličan efekat je moguće postići programerskom snalažljivošću i ne instancirati klasu koja bi trebalo biti apstraktna. Za interfejse koje ovde nazivamo protokoli, vezana je ključna reč \textbf{@protocol} jer je \textbf{interface} rezervisana za klase. Sekcija protokola se završava sa \textbf{@end} i može sadžati dve podoblasti \textbf{@required}, za metode koji se obavezno moraju implementirati u klasi i \textbf{@optional}, za metode čija je implementacija opciona.
 
 \section{Java}
 \label{sec:java}
 
-Kako su klase su u centru zbivanja krenućemo od njih. Definišemo ih pomoću ključne reči \textbf{class}. Sledeći primer (\ref{lst:javaDeklaracija}) prikazuje kreiranje klase zaposleni, koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}). Objekte klasa instanciramo pomoću metoda konstruktora, koji nema povratni tip i uvek se zove isto kao i klasa. Ako ne definišemo konstruktor, automatski se generiše podrazumevani konstruktor\cite{horstmann2017core}, koji inicijalizuje objekat na podrazumevane vrednosti.
+Kako su klase u centru zbivanja krenućemo od njih. Definišemo ih pomoću ključne reči \textbf{class}. Sledeći primer (\ref{lst:javaDeklaracija}) prikazuje kreiranje klase zaposleni, koja ima svoje atribute i metode(detaljnije \ref{subsec:javaEnkapsulacija}). Objekte klasa instanciramo pomoću metoda konstruktora, koji nema povratni tip i uvek se zove isto kao i klasa. Ako ne definišemo konstruktor, automatski se generiše podrazumevani konstruktor\cite{horstmann2017core}, koji inicijalizuje objekat na podrazumevane vrednosti.
 
 \begin{lstlisting}[caption={Primer deklarisanja klase sa enkapsulacijom i nasleđivanjem},frame=single, label=lst:javaDeklaracija]
 public class Employee {
@@ -270,15 +270,14 @@ Za nasleđivanje koristimo ključnu reč \textbf{extends}. Obratiti pažnju na p
 \subsection{Polimorfizam}
 \label{subsec:javaPolimorfizam}
 
-Višestruka upotrebljivost koda, tj. pripadnost metoda objektu se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept važnosti metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}. U primeru koda \ref{lst:javaDeklaracija}, Marko.display(); pozvaće metod klase vozač, iako postoji isti metod bazne klase.
+Višestruka upotrebljivost koda, tj. pripadnost metoda objektu se obavlja u vreme izvršavanja(eng.~{\em run time execution}) i predstavlja koncept preklapanja metoda(eng.~{\em\textbf{overriding}})\cite{horstmann2017core}. U primeru koda \ref{lst:javaDeklaracija}, Marko.display(); pozvaće metod klase vozač, iako postoji isti metod bazne klase.
 
 Koncept preopterećenosti metoda(eng.~{\em\textbf{overloading}})\cite{horstmann2017core}, određuje metode u vremenu kompajliranja(eng.{\em compile time}) na osnovu razlika u potpisu metode(različito ime metoda ili tipovi i broj parametara). U primeru koda [\ref{lst:javaDeklaracija}], Marko.display(2); pozvaće metod display(int x) klase vozač.
 
 \subsection{Apstrakcija}
 \label{subsec:javaApstrakcija}
 
-Izdvajanje skupa metoda sa kojima spoljašnji korisnik komunicira, prema artiklu \cite{oopJava}, vršimo pomoću apstraktnih klasa ili interfejsa.
-
+Izdvajanje skupa metoda sa kojima spoljašnji korisnik komunicira, prema članku \cite{oopJava}, vršimo pomoću apstraktnih klasa ili interfejsa.
 Za apstraktne klase navodimo ključnu reč~{\em \textbf{abstract}}(kod \ref{lst:javaAbstract}). Ne mogu se instancirati, ali može biti tip promenljive. Sadrže apstraktne metode koje treba da predefiniše neka podklasa.
 
 \begin{lstlisting}[caption={Apstraktna klasa},frame=single, label=lst:javaAbstract]
