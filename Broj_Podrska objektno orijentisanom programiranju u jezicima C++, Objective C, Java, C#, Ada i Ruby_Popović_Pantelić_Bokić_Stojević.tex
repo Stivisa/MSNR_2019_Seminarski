@@ -5,11 +5,10 @@
 
 \usepackage{color}
 \usepackage{url}
-\usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
 
-\usepackage[english,serbian]{babel}
+\usepackage[english]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
 
 \usepackage[unicode]{hyperref}
@@ -297,54 +296,55 @@ interface Employee {
 \section{C\#}
 \label{sec:csharp}
 
-C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a I  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podršku objektno orijentisanom programiranju uključujući nasleđivanje, enkapsulaciju, apstrakciju, I polimorfizam.
+C\# je jednostavan, moderan, objektno-orijentisan jezik, razvijen od strane Microsoft-a i  odobren od strane ECMA-e(European Computer Manufacturers Association).  Nudi punu podršku objektno orijentisanom programiranju uključujući nasleđivanje, enkapsulaciju, apstrakciju, i polimorfizam.
 
-Ne podržava druge paradigme ali koristi svoje imperativne strukture. Veome je slična podrška OOP-u kao kod Java programskog jezika takođe su iste I klase I strukture.
+Ne podržava druge paradigme ali koristi svoje imperativne strukture.
+Veoma je sličan Java programskom jeziku.
 
 \subsection{Enkapsulacija}
 \label{subsec:csharpEnkapsulacija}
 
-Enkapsulacija je kada se grupa od povezanih metoda, svojstava I ostalih članova tretira kao jedan isti objekat.
+Enkapsulacija je kada se grupa povezanih metoda, svojstava i ostalih članova tretira kao jedan isti objekat.
 C\# podrzava sledeće specifikatore pristupa:
 \begin{itemize}
 \item Public:
-Dopušta klasi da izloži varijable i funkcije članova drugim funkcijama i objektima. Svakom public članu se može pristupiti izvan klase.
+Dopušta klasi da izloži atribute i metode članova drugim metodama i atributima. Svakom public članu se može pristupiti izvan klase.
 
 \item Private:
-Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata.Samo funkcije iz iste klase mogu pristupiti svojim privatnim članovima.  Čak i instanca klase ne može pristupiti svojim privatnim članovima.
+Dopušta klasi da sakrije atribute i metode članova od ostalih funkcija i objekata.Samo metode iz iste klase mogu pristupiti svojim privatnim članovima.  Čak i instanca klase ne može pristupiti svojim privatnim članovima.
 
 \item Protected:
-Dopušta podređenoj klasi da pristupi  varijablama i funkcijama članova svoje osnovne klase. Na taj način pomaže u implementiranju nasleđivanja.
+Dopušta podređenoj klasi da pristupi  atributima i metodama članova svoje osnovne klase. Na taj način pomaže u implementiranju nasleđivanja.
 
 \item Internal:
-Dopušta klasi da izlozi varijable i funkcije članova drugim funkcijama i objektima u trenutnom skupu. Tačnije svakom članu sa ovim specifikatorom pristupa se može pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan clan.
+Dopušta klasi da izloži atribute i metode članova drugim metodama i atributima u trenutnom skupu. Tačnije svakom članu sa ovim specifikatorom pristupa se može pristupiti iz bilo koje klase ili metode definisane unutar aplikaciju u kojoj je definisan član.
 
 \item Protected internal:
-Dopušta klasi da sakrije promenljive i funkcije članova od ostalih funkcija i objekata klase, osim podređene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasleđivanja.
+Dopušta klasi da sakrije atribute i metode članova od ostalih metoda i atributa klase, osim podređene klase unutar iste aplikacije.To se takodje koristi kod implementacije nasleđivanja.
 \end{itemize}
 
 \subsection{Nasleđivanje}
 \label{subsec:csharpNasledjivanje}
 
-Nasleđivanje je, kao što samo ime kaže, mogućnost da “nasleđuje” metode I svojstva od postojećih klasa.
+Nasleđivanje je, kao što samo ime kaže, mogućnost da “nasleđuje” metode i svojstva od postojećih klasa.
 Kod C\# nasleđivanja, klasa čiji su članovi nasleđeni se zove bazična (roditeljska) klasa, a klasa koja nasleđuje članove bazične klase se zove izvedena (podređena) klasa.
 
 C\# Koristi sintaksu C++ za definisanje klasa.
-Nasleđena metoda od roditeljske klase moze biti zamenjena u izvedenoj klasi tako sto se definiše kao new(novo).
-Verzija roditeljske klase se I dalje moze zvati eksplicitnom sa prefiksom base(baza): base.Draw().
+Nasleđena metoda od roditeljske klase može biti zamenjena u izvedenoj klasi tako što se definiše kao new(novo).
+Verzija roditeljske klase se i dalje može zvati eksplicitnom sa prefiksom base(baza): base.Draw().
 
 \subsection{Polimorfizam}
 \label{subsec:csharpPolimorfizam}
 
-U C\#-u, polimorfizam omogućava klasama da da implementiraju različite metode koje se nazivaju istim imenom i omogućava pozivanje metoda izvedene klase kroz referencu bazične klase tokom izvođena, na osnovu naših zahteva.
+U C\#-u, polimorfizam omogućava klasama da implementiraju različite metode koje se nazivaju istim imenom i omogućava pozivanje metoda izvedene klase kroz referencu bazične klase tokom izvođena, na osnovu naših zahteva.
 
 U C\#-u imamo dve različite vrste polimorfizma a to su: Polimorfizam vremena kompiliranja i polimorfizam vremena izvođenja.
 
 \subsection{Apstrakcija}
 \label{subsec:csharpApstrakcija}
 
-Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja I povećanja efikasnosti.
-U C\#-u možemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu nasih zahteva, videti primer (\ref{lst:csharpDeklaracija}).
+Apstrakcija je proces kod koga programer krije sve osim relevantnih podataka o datom objektu u cilju pojednostavljanja i povećanja efikasnosti.
+U C\#-u možemo napraviti klasu sa potrebnim metodama i svojstvima. Izlažemo samo potrebne metode i svojstva koristeći modifikatore pristupa na osnovu naših zahteva, videti primer (\ref{lst:csharpDeklaracija}).
 
 \begin{lstlisting}[caption={Primer deklarisanja apstraktivne klase u C\#-u},frame=single, label=lst:csharpDeklaracija]
 abstract class MobilePhone {  
