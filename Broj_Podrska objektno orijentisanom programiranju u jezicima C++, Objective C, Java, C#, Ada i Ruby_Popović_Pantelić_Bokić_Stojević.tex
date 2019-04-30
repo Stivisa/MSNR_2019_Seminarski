@@ -369,7 +369,7 @@ public class BlackBerry: MobilePhone {
 \section{Ada}
 \label{sec:ada}
 
-Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima(eng. ~{\em types}) deklarisanim u jedinicama paketa(eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa(eng. ~{\em root type}) unutar paketa. Svakom tipu je pridružena oznaka(eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa. Unutar paketa možemo imati procedure(nemaju povratnu vrednost) i funkcije(imaju povratnu vrednost). U nastavku možemo videti primer(\ref{lst:adaDeklaracija}) OOP u Adi(u primeru su navedene samo deklaracije zbog kompaktnosti).
+Ada sledi model klase zasnovan na odvojenim karakteristikama (tipovima (eng. ~{\em types}) deklarisanim u jedinicama paketa (eng. ~{\em package})), a ne na jednom konstruktoru klase\cite{oopAda}. Klasa u Adi ima koncept klase tipa koja se sastoji od skupa tipova kreiranih unutar deklaracije osnovnog tipa (eng. ~{\em root type}) unutar paketa. Svakom tipu je pridružena oznaka (eng. ~{\em tag}) koja ga razlikuje od ostalih tipova dodavanjem ključne reči \textbf{tagged} u deklaraciju osnovnog tipa. Unutar paketa možemo imati procedure (nemaju povratnu vrednost) i funkcije (imaju povratnu vrednost). U nastavku možemo videti primer (\ref{lst:adaDeklaracija}) OOP u Adi (u primeru su navedene samo deklaracije zbog kompaktnosti).
 
 \begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ada.},frame=single, label=lst:adaDeklaracija]
 package Employees is 
@@ -395,19 +395,19 @@ U Adi, enkapsulacija je malo drugačija od većine OOP jezika jer je privatnost 
 
 \subsection{Nasleđivanje}
 \label{subsec:adaNasledjivanje}
-Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je direktno podržano u Adi, dok je višestruko nasleđivanje moguće implementirati pomoću interfejsa(eng. ~{\em interface}) uz dodatni rad programera. U primeru(\ref{lst:adaDeklaracija}) deklaracija tipa \textit{Driver} je tipičan primer kreiranja izvedenog tipa. Izvedeni tip nasleđuje sve podatke unutar tipa, kao i sve procedure i funkcije rodjiteljskog tipa.
+Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je direktno podržano u Adi, dok je višestruko nasleđivanje moguće implementirati pomoću interfejsa (eng. ~{\em interface}) uz dodatni rad programera. U primeru (\ref{lst:adaDeklaracija}) deklaracija tipa \textit{Driver} je tipičan primer kreiranja izvedenog tipa. Izvedeni tip nasleđuje sve podatke unutar tipa, kao i sve procedure i funkcije rodjiteljskog tipa.
 
 \subsection{Polimorfizam}
 \label{subsec:adaPolimorfizam}
-Korišćenjem ključne reči \textbf{overriding} ispred deklaracije funkcije ili procedure u izvedenom tipu postižemo polimorfizam pomoću nasleđivanja koji se najintenzivnije koristi. Polimorfizam takođe postižemo korišćenjem apstraktnih tipova gde za različite izvedene tipove različito implmentiramo procedure i funkcije koje nisu definisane. Još jedan način za postizanje polimorfizma je pomoću podtipova(eng. ~{\em subtypes}) o kojima neće biti reči.
+Korišćenjem ključne reči \textbf{overriding} ispred deklaracije funkcije ili procedure u izvedenom tipu postižemo polimorfizam pomoću nasleđivanja koji se najintenzivnije koristi. Polimorfizam takođe postižemo korišćenjem apstraktnih tipova gde za različite izvedene tipove različito implmentiramo procedure i funkcije koje nisu definisane. Još jedan način za postizanje polimorfizma je pomoću podtipova (eng. ~{\em subtypes}) o kojima neće biti reči.
 
 \subsection{Apstrakcija}
 \label{subsec:adaApstrakcija}
-Ada pruža podršku apstraktnim tipovima čije je ponašanje skoro identično ponašanju apstraktnih klasi drugih OOP jezika. Tip postaje apstraktan dodavanjem ključne reči \textbf{abstract} u njegovoj deklaraciji.  Apstraktni tip bez komponenti nazivamo interfejsom(eng. ~{\em interface}). Dodavanjem ključne reči \textbf{abstract} u deklaraciji procedura i funkcija omogućavamo da budu definisane u izvedenim tipovima
+Ada pruža podršku apstraktnim tipovima čije je ponašanje skoro identično ponašanju apstraktnih klasi drugih OOP jezika. Tip postaje apstraktan dodavanjem ključne reči \textbf{abstract} u njegovoj deklaraciji.  Apstraktni tip bez komponenti nazivamo interfejsom (eng. ~{\em interface}). Dodavanjem ključne reči \textbf{abstract} u deklaraciji procedura i funkcija omogućavamo da budu definisane u izvedenim tipovima
 
 \section{Ruby}
 \label{sec:ruby}
- Podršku u programskom jeziku Ruby ilustrovaćemo primerom(\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima\cite{oopRuby}.
+ Podršku u programskom jeziku Ruby ilustrovaćemo primerom (\ref{lst:rubyDeklaracija}) koji pokriva sve bitnije aspekte objektno orijentisanog programiranja. Standardni metod klase je \textbf{initialize}, on se poziva automatski prilikom kreiranja objekta i ponaša se skoro identično kao konstruktori u drugim programskim jezicima\cite{oopRuby}.
 
 \begin{lstlisting}[caption={Primer objektno orijentisanog programiranja u jeziku Ruby.},frame=single, label=lst:rubyDeklaracija]
 class Employee
@@ -437,21 +437,21 @@ drv = Driver.new("John")
 
 \subsection{Enkapsulacija}
 \label{subsec:rubyEnkapsulacija}
-Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase(podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije ključnim rečima \textbf{public} \textbf{protected}, \textbf{private} neposredno pre definicije jednog ili više metoda. Ruby nam pruža mogucnost ugrađenih metoda za pristup(eng. ~{\em accessor methods}). U primeru(\ref{lst:rubyDeklaracija})  \textbf{attr\_accessor} omogućava čitanje i menjanje vrednosti promenljivih klase. Pomocu \textbf{attr\_reader} i \textbf{attr\_writer} možemo pojedinačno dopustiti samo čitanje odnosno samo menjanje vrednosti promenljivih.
+Kako u samom jeziku ne postoji mogućnost direktnog pristupa podacima unutar klase (podaci su privatni), njima možemo pristupiti jedino pomoću metoda klase. Svi metodi klase su javni, osim ako nije eksplicitno naznačeno drugačije ključnim rečima \textbf{public}, \textbf{protected}, \textbf{private} neposredno pre definicije jednog ili više metoda. Ruby nam pruža mogućnost ugrađenih metoda za pristup (eng. ~{\em accessor methods}). U primeru (\ref{lst:rubyDeklaracija})  \textbf{attr\_accessor} omogućava čitanje i menjanje vrednosti promenljivih klase. Pomocu \textbf{attr\_reader} i \textbf{attr\_writer} možemo pojedinačno dopustiti samo čitanje odnosno samo menjanje vrednosti promenljivih.
 
 \subsection{Nasleđivanje}
 \label{subsec:rubyNasledjivanje}
-Kada nakon imena klase u njenoj definicije dodamo znak < za kojim sledi ime već postojeće klase, dobijamo efekat nasleđivanja koji možemo videti u prethodnom primeru(\ref{lst:rubyDeklaracija}) gde klasa \textit{Driver} nasleđuje klasu \textit{Employee}(primetiti da u klasi \textit{Driver} nismo implementirali \textbf{attr\_accessor} jer se nasledjuje). Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je moguće dok višestruko nasleđivanje nije(više o tipovima nasleđivanja u \ref{subsec:javaNasledjivanje}).
+Kada nakon imena klase u njenoj definicije dodamo znak < za kojim sledi ime već postojeće klase, dobijamo efekat nasleđivanja koji možemo videti u prethodnom primeru (\ref{lst:rubyDeklaracija}) gde klasa \textit{Driver} nasleđuje klasu \textit{Employee}(primetiti da u klasi \textit{Driver} nismo implementirali \textbf{attr\_accessor} jer se nasleđuje). Nasleđivanje po nivoima i hijerarhijsko nasleđivanje je moguće dok višestruko nasleđivanje nije.
 
 \subsection{Polimorfizam}
 \label{subsec:rubyPolimorfizam}
-Osnovni vid polimorfizma možemo postići nasleđivanjem tako sto ce razliciti objekti odgovoriti različito na iste metode. U primeru(\ref{lst:rubyDeklaracija}) u klasi \textit{Driver} smo definisali metod \textit{print} koji je istog naziva kao i nasleđeni metod čime postižemo da instanca klase odgovori različito na metod od instance roditeljske klase. 
+Osnovni vid polimorfizma možemo postići nasleđivanjem tako što će različiti objekti odgovoriti različito na iste metode. U primeru (\ref{lst:rubyDeklaracija}) u klasi \textit{Driver} smo definisali metod \textit{print} koji je istog naziva kao i nasleđeni metod čime postižemo da instanca klase odgovori različito na metod od instance roditeljske klase. 
 
-Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem" (eng. ~{\em duck typing}) u kojem nisu bitni tipovi objekata već skup istoimenih metoda koje poseduju. Za primer uzmimo klasu \textit{Duck} koja poseduje metod  \textit{quack} i funkciju koja za argument uzima objekat tipa \textit{Duck} i poziva metod \textit{quack}. U tom slučaju funkciji možemo proslediti bilo koji objekat koji poseduje metod naziva \textit{quack}(sa istim ili različitim ponašanjem metoda) i gledati na njega kao da je tipa \textit{Duck} bez obzira što on to nije.
+Drugačiji vid polimorfizma postižemo takozvanim "pačijim kucanjem" (eng. ~{\em duck typing}) u kojem nisu bitni tipovi objekata već skup istoimenih metoda koje poseduju. Za primer uzmimo klasu \textit{Duck} koja poseduje metod  \textit{quack} i funkciju koja za argument uzima objekat tipa \textit{Duck} i poziva metod \textit{quack}. U tom slučaju funkciji možemo proslediti bilo koji objekat koji poseduje metod naziva \textit{quack} (sa istim ili različitim ponašanjem metoda) i gledati na njega kao da je tipa \textit{Duck} bez obzira što on to nije.
 
 \subsection{Apstrakcija}
 \label{subsec:rubyApstrakcija}
-Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može implementirati\cite{rubyWay}. Apstrakciju je moguće implementirati pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koji pokrecu "NotImplementedError" grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomocu gore opisanog polimorfizma(\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi. Biblioteka \textbf{abstraction} nam olaksava postizanje efekta apstrakcije.
+Ruby nema direktnu podršku za apstrakciju klasa ali se sličan efekat može implementirati\cite{rubyWay}. Apstrakciju je moguće implementirati pomoću nasleđivanja gde rodjiteljska klasa definiše apstraktne metode koje pokreću \textit{NotImplementedError} grešku tako da se ne mogu instancirati, pa mora postojati dete klasa koja će pomoću gore opisanog polimorfizma (\ref{subsec:rubyPolimorfizam}) nasleđivanjem implementirati željene apstraktne metode. Metode koje su zajedničke implementiramo u roditeljskoj klasi. Biblioteka \textbf{abstraction} nam olakšava postizanje efekta apstrakcije.
 
 \newpage
 \section{Zaključak}
@@ -461,7 +461,7 @@ U ovom radu su objašnjene najvažnije karakteristike objektno-orijentisanog pro
 od teorijskog uvoda u principe, do konkretne podrške tih principa u jezicima.
 Uviđamo popularnost objektno-orijentisanog programiranja zbog osobina poput modularnosti, jednostavnog održavanja i modifikovanja postojećeg koda, višestruka upotreba koda.
 Primećuje se da različiti jezici na različite načine podržavaju određene koncepte, neke i ne podržavaju, dok za druge pružaju alternativne načine za njihovo ostvarivanje.
-Kroz izložene primere programski jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenih tema.
+Kroz izložene primere programskih jezika ovaj rad pruža odličan uvod za upoznavanje sa objektno-orijentisanom paradigmom i podstrek čitaocu na dalje i dublje istraživanje obrađenih tema.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
