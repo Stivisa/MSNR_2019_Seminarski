@@ -84,7 +84,7 @@ Osnovni principi objektno-orijentisane paradigme:
 \begin{enumerate}
 \item \textbf{Princip jedinstvene odgovornosti-}  Svaka klasa treba da ima samo jedan zadatak. Čim klasa ima više od jednog zadatka, verovatno bi mogla da se podeli u 2 klase.
 \item \textbf{Enkapsulacija-} i {\em Tell dont ask} princip su usko vezani. Vidljivost podataka je osnovni način enkapsulacije. U većini programskih jezika, postoje 3 osnovna nivoa vidljivosti- public, protected i private.
-\item \textbf{Nasleđivanje-} podrazumeva da jedna klasa "nasledi" sve metode i atribute svoje nadklase, sem kad su metode i atributi proglašeni privatnim. Uspostavlja odnos "jeste" izmedju klasa- ako klasa A nasleđuje klasu B, kaže se da A "jeste" B. Klasa B se naziva nadklasom klase A. 
+\item \textbf{Nasleđivanje-} podrazumeva da jedna klasa `nasledi' sve metode i atribute svoje nadklase, sem kad su metode i atributi proglašeni privatnim. Uspostavlja odnos "jeste" izmedju klasa- ako klasa A nasleđuje klasu B, kaže se da A "jeste" B. Klasa B se naziva nadklasom klase A. 
 Vrste nasleđivanja prikazane su na slici \ref{fig:VrsteNasledjivanja}.
 \item \textbf{Polimorfizam-} označava da klase koje implementiraju isti interfejs mogu da rade različite stvari, dok god se drže principa tog interfejsa. 
 \item \textbf{Apstrakcija-} je termin koji se veže za {\em interfejse} i {\em apstraktne klase}. \textbf{Interfejsi} se koriste za opisivanje ponašanja klase, definišu javni API (Application programming interface) klase, odnosno metode koje klasa mora da implementira da bi program radio. Oni ne mogu biti instancirani, mogu imati samo potpise metoda, bez tela, ne mogu imati atribute i sve metode moraju biti javne. \textbf{Apstraktne klase} su slične interfejsima, ali za razliku od njih metode apstraktnih klasa mogu da imaju telo, mogu da imaju atribute i mogu imati sva moguća prava pristupa (public, protected, private). 
@@ -111,7 +111,7 @@ Jezici koji podržavaju sve 4 funkcionalnosti objektno orijentisane paradigme al
 
 \subsection{Enkapsulacija}
 \label{subsec:c++Enkapsulacija}
-U C++ ne mora eksplicitno za svaki atribut ili metod klase da bude naglašeno pravo pristupa, nego se prave sekcije, i na početku sekcije se stavi modifikator pristupa (podržani su private, public i protected, ne podržava package modifikator). Ukoliko se modifikator ne navede eksplicitno, kod klasa se podrazumeva private, dok kod struktura se podrazumeva public (što je jedna od osnovnih razlika između struktura i klasa u C++).
+U C++ ne mora eksplicitno za svaki atribut ili metod klase da bude naglašeno pravo pristupa, nego se prave sekcije, i na početku sekcije se stavi modifikator pristupa (podržani su private, public i protected, ne podržava package modifikator). Ukoliko se modifikator ne navede eksplicitno, kod klasa se podrazumeva private, dok kod struktura se podrazumeva public (što je jedna od osnovnih razlika između struktura i klasa u C++) \cite{cppPrata}.
 \begin{lstlisting}[caption={Primer deklarisanja klase sa enkapsulacijom},frame=single, label=lst:c++Deklaracija]
 class Employee {
 private:
@@ -142,7 +142,7 @@ public:
 \end{lstlisting}
 \subsection{Polimorfizam}
 \label{subsec:c++Polimorfizam}
-U C++ su podržana dva osnovna tipa polimorfizma- \textbf{polimorfizam u vreme kompilacije} i \textbf{polimorfizam u vreme izvršavanja}. Prvi obezbeđuje preopterećenje metoda i operatora. Preopterećenje operatora je isto jedna od C++ specifičnih mogućnosti, gde možemo sami da definišemo ponašanje operatora npr "+" dok god ispunjava svoje osnovne karakteristike (da ima 2 argumenta). Drugi tip polimorfizma omogućuje premošćavanje metoda, tj. za metod se kaže da je premošten ukoliko izvedena klasa poseduje metod sa identičnim potpisom. 
+U C++ su podržana dva osnovna tipa polimorfizma- \textbf{polimorfizam u vreme kompilacije} i \textbf{polimorfizam u vreme izvršavanja}. Prvi obezbeđuje preopterećenje metoda i operatora. Preopterećenje operatora je isto jedna od C++ specifičnih mogućnosti, gde možemo sami da definišemo ponašanje operatora, npr `+' dok god ispunjava svoje osnovne karakteristike (da ima 2 argumenta). Drugi tip polimorfizma omogućuje preklapanje metoda, ukoliko izvedena klasa poseduje metod sa identičnim potpisom. 
 \subsection{Apstrakcija}
 \label{subsec:c++Apstrakcija}
 Za razliku od drugih OOP jezika, C++ ne poseduje ključnu rec ~{\em abstract}. Apstraktne klase se u C++ kreiraju tako što se napravi virtuelna metoda i u potpisu joj se dodeli 0. Takva klasa ne može biti instancirana, ali može biti napravljen pokazivač na nju. Takođe, apstraktna klasa može da ima konstruktor i destruktor. Klasa koje ne premosti virtuelnu metodu takođe postaje apstraktna klasa. Postoji nekoliko pravila koja moraju da važe za apstraktne klase:
