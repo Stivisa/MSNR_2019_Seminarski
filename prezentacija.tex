@@ -185,6 +185,57 @@ private &Da &Ne &Ne &Ne\\ \hline
 \end{table}
 \end{frame}
 
+\section{Ada}
+\begin{frame}[fragile]{Ada}
+\begin{lstlisting}[frame=single, label=lst:adaDeklaracija]
+package Employees is 
+	type Employee is tagged 
+	record
+		Name: String;
+	end record;
+	procedure Set_Name(Obj: in out Employee; Name: String);
+	function Print(E: Employee) return String;
+end Employees;
+
+package Drivers
+	type Driver is new Employees.Employee with record
+		Driver_ID: Integer;
+	end record;
+	procedure Set_D(Obj: in out Employee; Name: String);
+	overriding function Print(D: Driver) return String;
+end Drivers;
+\end{lstlisting}
+\end{frame}
+
+\section{Ruby}
+\begin{frame}[fragile]{Ruby}
+\begin{lstlisting}[frame=single, label=lst:rubyDeklaracija]
+class Employee
+	attr_accessor :name
+	def initialize(name)
+		@name = name
+		print()
+	end
+	def print
+		puts "Employee: #{@name}."
+	end
+end
+
+class Driver < Employee
+	def initialize(name)
+		@name = name
+		print()
+	end
+	private
+	def print
+		puts "Driver: #{@name}."
+	end
+end
+
+emp = Employee.new("John")
+drv = Driver.new("John")
+\end{lstlisting}
+\end{frame}
 
 \section{Literatura}
 \begin{frame}[fragile]{Literatura}
