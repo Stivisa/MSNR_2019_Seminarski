@@ -187,6 +187,34 @@ private &Da &Ne &Ne &Ne\\ \hline
 
 \section{Ada}
 \begin{frame}[fragile]{Ada}
+\begin{itemize}
+	\item Ada ne sledi model klase zasnovan na jednom konstruktoru
+	\begin{itemize}
+		\item Odvojene karakteristike tipova unutar paketa
+		\item Moguće postojanje funkcija i procedura u paketu
+	\end{itemize}
+	\item Enkapsulacija
+	\begin{itemize}
+		\item Privatnost se određuje na nivou paketa
+		\item private, limited private
+	\end{itemize}
+	\item Nasleđivanje
+	\begin{itemize}
+		\item Implementirano nasleđivanje po nivoima i hijerarhijsko
+		\item Višestruko nasleđivanje je moguće implementirati 
+	\end{itemize}
+	\item Polimorfizam
+	\begin{itemize}
+		\item Pomoću nasleđivanja, apstrkatnih tipova i podtipova
+	\end{itemize}
+	\item Apstrakcija
+	\begin{itemize}
+		\item Apstraktni tip se konstruiše dodavanjem abstract u deklaraciji
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Ada \small{- primer koda}}
 \begin{lstlisting}[frame=single, label=lst:adaDeklaracija]
 package Employees is 
 	type Employee is tagged 
@@ -209,6 +237,35 @@ end Drivers;
 
 \section{Ruby}
 \begin{frame}[fragile]{Ruby}
+\begin{itemize}
+	\item Kreiranje klasa u jeziku Ruby
+	\begin{itemize}
+		\item Standardni metod initialize, ponaša se kao konstruktor
+	\end{itemize}
+	\item Enkapsulacija
+	\begin{itemize}
+		\item public, protected i private
+		\item attr\_accessor(čitanje i izmena), attr\_reader(čitanje) i attr\_writer(izmena)
+	\end{itemize}
+	\item Nasleđivanje
+	\begin{itemize}
+		\item Implementirano nasleđivanje po nivoima i hijerarhijsko
+		\item Višestruko nasleđivanje nije podržano
+	\end{itemize}
+	\item Polimorfizam
+	\begin{itemize}
+		\item Pomoću nasleđivanja
+		\item Duck typing
+	\end{itemize}
+	\item Apstrakcija
+	\begin{itemize}
+		\item Nema direktnu podršku
+		\item Moguće implementiranje sličnog ponašanja pomoću nasleđivanja
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Ruby \small{- primer koda}}
 \begin{lstlisting}[frame=single, label=lst:rubyDeklaracija]
 class Employee
 	attr_accessor :name
