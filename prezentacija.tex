@@ -102,7 +102,33 @@
 \end{frame}
 
 
-\section{Objective C}
+\section{Objetive C}
+\begin{frame}[fragile]{Objetive C}
+\begin{itemize}
+\item Definisanje klasa u dve sekcije:
+	\begin{itemize}
+		\item {\em\textbf{@interface}}, za deklaraciju
+		\item {\em\textbf{@implementation}}, za implementaciju
+	\end{itemize}
+\item Enkapsulacija
+	\begin{itemize}
+		\item Atributi su podrazumevano privatni
+		\item Navođenje atributa u podsekcijama {\em\textbf{@property}} i {\em\textbf{@synthesize}}, generišu se metode javnog pristupa
+	\end{itemize}
+\item Nasleđivanje ( označava simbolom ':' )
+\item Polimorfizam
+	\begin{itemize}
+		\item U vreme kompilacije, nije omogućeno
+		\item U vreme izvršavanja
+	\end{itemize}
+\item Apstrakcija
+	\begin{itemize}
+		\item Nema koncepta apstraktnih klasa
+		\item Protokoli označavaju interfejse ({\em\textbf{@protocol, @required, @optional}})
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Objective C}
 \begin{lstlisting}[caption={Primer koda u Objective C jeziku},frame=single, label=ObjectiveC]
 @interface Employee : NSObject {
@@ -133,56 +159,50 @@ int main(int argc, const char * argv[]) {
 \end{frame}
 
 \section{Java}
-\begin{frame}[fragile]{Java \small{- primer koda sa enkapsulacijom, nasledjivanjem, polimorfizmom} }
-\begin{lstlisting}
-public class Employee {
-	private int salary;
-	#this je referenca na tekuci objekat
-	public Employee(int salary) { this.salary = salary;}
- 	public int getSalary(){ return salary;}
-	public void setSalary(int newSalary) { salary = newSalary;}
-	public void display() {
-     		System.out.println("Hello i'm employee!");
-   }
-	public static void main(String[] args) {
-    		Employee Marko = new Driver(600,"Mercedes");
-    		Marko.display();}    
-}
-class Driver extends Employee {
-  	String truck = "FAP";
-	#super vrsi poziv konstruktora bazne klase
-   	public Driver(int salary,String truck) {
-		super(salary); this.truck = truck;}
-  	public void display() {
-		System.out.println("My truck is "+truck+"!");
-	public void display(String x) {
-		System.out.println("My truck is "+truck+x+"!");
-}
-\end{lstlisting}
+\begin{frame}[fragile]{Java}
+\begin{itemize}
+\item Klase definisanje ({\em\textbf{class}})
+	\begin{itemize}
+		\item  instanciranje  ({\em \textbf{new}}) konstruktorima
+	\end{itemize}
+\item Enkapsulacija
+\begin{table}
+	\scalebox{0.8}{
+	\begin{tabular}{|l|c|c|c|c|} \hline
+	Modifikator &Klasa &Paket &Podklasa &Svet\\ \hline
+	public &Da &Da &Da &Da\\ \hline
+	protected &Da &Da &Da &Ne\\ \hline
+	podrazumevani &Da &Da &Ne &Ne\\ \hline
+	private &Da &Ne &Ne &Ne\\ \hline
+	\end{tabular}}
+	\begin{itemize}
+		\item  Metode javnog pristupa (eng. {\em getters and setters})
+	\end{itemize}
+\end{table}
+\item Polimorfizam
+	\begin{enumerate}
+		\item U vreme kompilacije, preopterećenost (eng. {\em overloading})
+		\item U vreme izvršavanja, preklapanje (eng. {\em overriding})
+	\end{enumerate}	
+\end{itemize}	
 \end{frame}
 
-\begin{frame}[fragile]{Apstrakcija}
-Apstraktne klase ili interfjesi
-\begin{lstlisting}
-public abstract class Employee {
-	public abstract void display(); ...
-interface Employee {
-	public void display(); #podrazumevano apstraktna
-	default void work(){System.out.println("Working"); }
-\end{lstlisting}
-\begin{table}
-\begin{center}
-\caption{Vidljivost različitih modifikatora pristupa.}
-\begin{tabular}{|l|c|c|c|c|} \hline
-Modifikator &Klasa &Paket &Podklasa &Svet\\ \hline
-public &Da &Da &Da &Da\\ \hline
-protected &Da &Da &Da &Ne\\ \hline
-podrazumevani &Da &Da &Ne &Ne\\ \hline
-private &Da &Ne &Ne &Ne\\ \hline
-\end{tabular}
-\label{tab:tabelaModPristupa}
-\end{center}
-\end{table}
+\begin{frame}[fragile]
+\begin{itemize}
+
+\item Nasleđivanje ({\em\textbf{extends}})
+	\begin{figure}[h!]
+	\includegraphics[scale=0.7]{slike/nasledjivanje.jpg}
+	\end{figure}	
+\item Apstrakcija
+	\begin{enumerate}
+		\item Apstraktne klase ({\em \textbf{abstract}} )
+		\item Interfejs ({\em \textbf{interface, implements}} )
+		\begin{itemize}
+			\item Klasa može implementirati više interfejsa, dok može nasleđivati samo jednu klasu
+		\end{itemize}
+	\end{enumerate}	
+\end{itemize}
 \end{frame}
 
 \section{C\#}
